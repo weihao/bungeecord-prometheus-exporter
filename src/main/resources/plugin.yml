@@ -1,0 +1,5 @@
+name: ${project.name}
+main: org.akadia.template.Main
+version: ${project.version}
+author: akadia
+description: ${project.description}
