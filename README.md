@@ -2,6 +2,12 @@
 
 A **Bungee plugin** which exports network stats for Prometheus.
 
+## Why Bungeecord Prometheus Exporter?
+- monitor your server infrastructure
+- track your players, events, and servers
+- automates the collection, management and viewing of your data
+- get alerts for service outages 
+
 ## Quick Start
 
 Drop the bungeecord-prometheus-exporter.jar into your Bungeecord plugins directory and start your Bungeecord proxy server.
