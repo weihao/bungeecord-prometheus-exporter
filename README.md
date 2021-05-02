@@ -2,6 +2,8 @@
 
 A **Bungee plugin** which exports network stats for Prometheus.
 
+> If you don't run a network proxy, you might also be interested in [Prometheus Exporter](https://github.com/sladkoff/minecraft-prometheus-exporter) for a `single server` metrics!
+
 ## Why Bungeecord Prometheus Exporter?
 - monitor your server infrastructure
 - track your players, events, and servers
@@ -26,4 +28,3 @@ The metrics port can be customized in the plugin's config.yml (a default config 
 
 ## Notes
 
-Looking for prometheus-export for a single server? Try [spigot prometheus exporter by sldk](https://github.com/sladkoff/minecraft-prometheus-exporter)
