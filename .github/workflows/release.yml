@@ -23,15 +23,7 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.2.2
-      with:
-       name: jar artifact
-       path: /home/runner/work/bungeecord-prometheus-exporter/bungeecord-prometheus-exporter/target/bungeecord-prometheus-exporter-*.jar
-    - name: Release
-      uses: qcastel/github-actions-maven-release@master
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        release-branch-name: "main"
+    - name: Publish package
+      run: mvn --batch-mode deploy
       env:
-        JAVA_HOME: /usr/lib/jvm/java-11-openjdk/
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
