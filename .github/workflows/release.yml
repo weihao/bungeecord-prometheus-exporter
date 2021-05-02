@@ -32,5 +32,4 @@ jobs:
       uses: qcastel/github-actions-maven-release@master
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        with:
-          release-branch-name: "main"
+        release-branch-name: "main"
