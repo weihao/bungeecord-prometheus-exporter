@@ -24,5 +24,6 @@ The metrics port can be customized in the plugin's config.yml (a default config 
 1. Paste in or upload [default dashboard](https://raw.githubusercontent.com/weihao/bungeecord-prometheus-exporter/main/dashboards/default.json)
 1. ![default dashboard](https://raw.githubusercontent.com/weihao/bungeecord-prometheus-exporter/main/images/dashboard.PNG)
 
-## Credit
-Thanks to @sladkoff
+## Notes
+
+Looking for prometheus-export for a single server? Try [spigot prometheus exporter by sldk](https://github.com/sladkoff/minecraft-prometheus-exporter)
