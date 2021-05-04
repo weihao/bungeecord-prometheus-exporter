@@ -1,21 +1,29 @@
 package org.akadia.prometheus.listeners;
 
-import io.prometheus.client.Counter;
-import net.md_5.bungee.api.event.ClientConnectEvent;
 import net.md_5.bungee.api.event.LoginEvent;
-import net.md_5.bungee.api.plugin.Listener;
+import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.event.EventHandler;
-import org.akadia.prometheus.utils.Util;
+import org.akadia.prometheus.interfaces.CountableMetrics;
 
-public class LoginEventListener implements Listener {
+public class LoginEventListener extends CountableMetrics {
 
-    static final Counter requests = Counter.build()
-            .name(Util.prefix("login_total"))
-            .help("total logins")
-            .register();
+    public LoginEventListener(Plugin plugin) {
+        super(plugin);
+    }
 
     @EventHandler
     public void onLoginEvent(LoginEvent event) {
-        requests.inc();
+        this.getCounter().inc();
     }
+
+    @Override
+    public String getHelp() {
+        return "total logins";
+    }
+
+    @Override
+    public String getConfigKey() {
+        return "login_total";
+    }
+
 }

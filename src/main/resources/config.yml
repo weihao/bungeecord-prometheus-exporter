@@ -1,2 +1,14 @@
 host: 127.0.0.1
 port: 9225
+enable_metrics:
+  jvm_gc: true
+  jvm_memory: true
+  jvm_threads: true
+  players_online_total: true
+  servers_online_total: true
+  client_connect_total: true
+  login_total: true
+  player_disconnects_total: true
+  post_login_total: true
+  pre_login_total: true
+  ping_total: true

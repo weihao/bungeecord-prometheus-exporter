@@ -1,21 +1,28 @@
 package org.akadia.prometheus.listeners;
 
-import io.prometheus.client.Counter;
-import net.md_5.bungee.api.event.LoginEvent;
 import net.md_5.bungee.api.event.PlayerDisconnectEvent;
-import net.md_5.bungee.api.plugin.Listener;
+import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.event.EventHandler;
-import org.akadia.prometheus.utils.Util;
+import org.akadia.prometheus.interfaces.CountableMetrics;
 
-public class PlayerDisconnectEventListener implements Listener {
+public class PlayerDisconnectEventListener extends CountableMetrics {
 
-    static final Counter requests = Counter.build()
-            .name(Util.prefix("player_disconnects_total"))
-            .help("total player disconnects")
-            .register();
+    public PlayerDisconnectEventListener(Plugin plugin) {
+        super(plugin);
+    }
 
     @EventHandler
     public void onPlayerDisconnectEvent(PlayerDisconnectEvent event) {
-        requests.inc();
+        this.getCounter().inc();
+    }
+
+    @Override
+    public String getConfigKey() {
+        return "player_disconnects_total";
+    }
+
+    @Override
+    public String getHelp() {
+        return "total player disconnects";
     }
 }

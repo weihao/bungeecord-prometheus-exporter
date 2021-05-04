@@ -1,20 +1,28 @@
 package org.akadia.prometheus.listeners;
 
-import io.prometheus.client.Counter;
 import net.md_5.bungee.api.event.ProxyPingEvent;
-import net.md_5.bungee.api.plugin.Listener;
+import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.event.EventHandler;
-import org.akadia.prometheus.utils.Util;
+import org.akadia.prometheus.interfaces.CountableMetrics;
 
-public class ProxyPingEventListener implements Listener {
+public class ProxyPingEventListener extends CountableMetrics {
 
-    static final Counter requests = Counter.build()
-            .name(Util.prefix("ping_total"))
-            .help("total pings")
-            .register();
+    public ProxyPingEventListener(Plugin plugin) {
+        super(plugin);
+    }
 
     @EventHandler
     public void onProxyPingEvent(ProxyPingEvent event) {
-        requests.inc();
+        this.getCounter().inc();
+    }
+
+    @Override
+    public String getHelp() {
+        return "total pings";
+    }
+
+    @Override
+    public String getConfigKey() {
+        return "ping_total";
     }
 }

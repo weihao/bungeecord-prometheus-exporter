@@ -1,21 +1,16 @@
-package org.akadia.prometheus.metrics;
+package org.akadia.prometheus.interfaces;
 
-import io.prometheus.client.Collector;
-import io.prometheus.client.CollectorRegistry;
 import net.md_5.bungee.api.plugin.Plugin;
 
 import java.util.logging.Logger;
 
-public abstract class Metric {
+public abstract class Metric implements Configurable {
 
     private final Plugin plugin;
-    private final Collector collector;
 
-    private boolean enabled = false;
-
-    protected Metric(Plugin plugin, Collector collector) {
+    protected Metric(Plugin plugin) {
         this.plugin = plugin;
-        this.collector = collector;
+
     }
 
     protected Plugin getPlugin() {
@@ -23,11 +18,6 @@ public abstract class Metric {
     }
 
     public void collect() {
-
-        if (!enabled) {
-            return;
-        }
-
         try {
             doCollect();
         } catch (Exception e) {
@@ -46,18 +36,5 @@ public abstract class Metric {
         log.throwing(className, "collect", e);
     }
 
-
-    public void enable() {
-        CollectorRegistry.defaultRegistry.register(collector);
-        enabled = true;
-    }
-
-    public void disable() {
-        CollectorRegistry.defaultRegistry.unregister(collector);
-        enabled = false;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
+    public abstract String getConfigKey();
 }

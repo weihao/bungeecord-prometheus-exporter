@@ -1,6 +1,6 @@
 package org.akadia.prometheus;
 
-import org.akadia.prometheus.metrics.Metric;
+import org.akadia.prometheus.interfaces.Metric;
 
 import java.util.ArrayList;
 import java.util.List;

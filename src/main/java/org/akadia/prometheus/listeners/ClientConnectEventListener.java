@@ -1,21 +1,31 @@
 package org.akadia.prometheus.listeners;
 
-import io.prometheus.client.Counter;
 import net.md_5.bungee.api.event.ClientConnectEvent;
-import net.md_5.bungee.api.event.PlayerHandshakeEvent;
-import net.md_5.bungee.api.plugin.Listener;
+import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.event.EventHandler;
-import org.akadia.prometheus.utils.Util;
+import org.akadia.prometheus.interfaces.CountableMetrics;
 
-public class ClientConnectEventListener implements Listener {
+public class ClientConnectEventListener extends CountableMetrics {
 
-    static final Counter requests = Counter.build()
-            .name(Util.prefix("client_connect_total"))
-            .help("total client connect")
-            .register();
+
+    public ClientConnectEventListener(Plugin plugin) {
+        super(plugin);
+    }
 
     @EventHandler
     public void onClientConnectEvent(ClientConnectEvent event) {
-        requests.inc();
+        this.getCounter().inc();
     }
+
+    @Override
+    public String getConfigKey() {
+        return "client_connect_total";
+    }
+
+    @Override
+    public String getHelp() {
+        return "total client connect";
+    }
+
+
 }
