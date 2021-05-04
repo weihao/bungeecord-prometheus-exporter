@@ -37,4 +37,11 @@ public abstract class Metric implements Configurable {
     }
 
     public abstract String getConfigKey();
+
+    public abstract String getHelp();
+
+    public String[] getLabels() {
+        return new String[]{};
+    }
+
 }

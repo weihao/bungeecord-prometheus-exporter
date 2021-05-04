@@ -3,13 +3,12 @@ package org.akadia.prometheus.metrics;
 import io.prometheus.client.Collector;
 import io.prometheus.client.hotspot.ThreadExports;
 import net.md_5.bungee.api.plugin.Plugin;
-import org.akadia.prometheus.interfaces.Configurable;
 import org.akadia.prometheus.interfaces.Metric;
 import org.akadia.prometheus.utils.Util;
 
 import java.util.List;
 
-public class JvmThreadsWrapper extends Metric implements Configurable {
+public class JvmThreadsWrapper extends Metric {
 
     public JvmThreadsWrapper(Plugin plugin) {
         super(plugin);

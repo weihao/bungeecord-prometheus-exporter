@@ -17,9 +17,13 @@ public abstract class GauageMetric implements Configurable {
         this.gauge = Gauge.build()
                 .name(Util.prefix(this.getConfigKey()))
                 .help(this.getHelp())
+                .labelNames(this.getLabels())
                 .create();
-
     }
+
+    public abstract String getHelp();
+
+    public abstract String getConfigKey();
 
     public Gauge getGauge() {
         return gauge;
@@ -47,4 +51,9 @@ public abstract class GauageMetric implements Configurable {
                 className, e.toString()));
         log.throwing(className, "collect", e);
     }
+
+    public String[] getLabels() {
+        return new String[]{};
+    }
+
 }

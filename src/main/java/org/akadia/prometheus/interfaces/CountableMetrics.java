@@ -24,9 +24,10 @@ public abstract class CountableMetrics implements Listener, Configurable {
 
     public abstract String getConfigKey();
 
+    public abstract String getHelp();
+
     public String[] getLabels() {
-        return null;
+        return new String[]{};
     }
 
-    ;
 }
