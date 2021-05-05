@@ -26,4 +26,9 @@ public class JvmMemory extends GauageMetric {
     public String getHelp() {
         return "JVM memory usage";
     }
+
+    @Override
+    public String[] getLabels() {
+        return new String[]{"type"};
+    }
 }

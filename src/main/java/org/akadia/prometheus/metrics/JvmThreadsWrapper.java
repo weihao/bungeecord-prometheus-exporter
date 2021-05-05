@@ -3,29 +3,30 @@ package org.akadia.prometheus.metrics;
 import io.prometheus.client.Collector;
 import io.prometheus.client.hotspot.ThreadExports;
 import net.md_5.bungee.api.plugin.Plugin;
-import org.akadia.prometheus.interfaces.Metric;
+import org.akadia.prometheus.interfaces.MetricWrapper;
 import org.akadia.prometheus.utils.Util;
 
 import java.util.List;
 
-public class JvmThreadsWrapper extends Metric {
+public class JvmThreadsWrapper extends MetricWrapper {
 
     public JvmThreadsWrapper(Plugin plugin) {
-        super(plugin);
+        super(plugin, new ThreadExportsCollector());
     }
 
     @Override
-    protected void doCollect() {
+    public void doCollect() {
     }
+
 
     @Override
     public String getConfigKey() {
-        return null;
+        return "jvm_threads";
     }
 
     @Override
     public String getHelp() {
-        return null;
+        return "JVM threads usage";
     }
 
     private static class ThreadExportsCollector extends Collector {

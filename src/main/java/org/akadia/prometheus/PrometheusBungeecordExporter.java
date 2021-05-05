@@ -1,5 +1,6 @@
 package org.akadia.prometheus;
 
+import io.prometheus.client.CollectorRegistry;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
@@ -8,6 +9,7 @@ import net.md_5.bungee.config.YamlConfiguration;
 import org.akadia.prometheus.interfaces.Configurable;
 import org.akadia.prometheus.interfaces.CountableMetrics;
 import org.akadia.prometheus.interfaces.Metric;
+import org.akadia.prometheus.interfaces.MetricWrapper;
 import org.akadia.prometheus.listeners.ClientConnectEventListener;
 import org.akadia.prometheus.listeners.LoginEventListener;
 import org.akadia.prometheus.listeners.PlayerDisconnectEventListener;
@@ -62,7 +64,9 @@ public class PrometheusBungeecordExporter extends Plugin {
         for (Configurable configurable : configurables) {
             if (configurable instanceof CountableMetrics) {
                 this.getProxy().getPluginManager().registerListener(this, (Listener) configurable);
-            } else if (configurable instanceof Metric) {
+            } else if (configurable instanceof MetricWrapper) {
+                CollectorRegistry.defaultRegistry.register(((MetricWrapper) configurable).getCollector());
+            } else {
                 MetricRegistry.getInstance().register((Metric) configurable);
             }
         }

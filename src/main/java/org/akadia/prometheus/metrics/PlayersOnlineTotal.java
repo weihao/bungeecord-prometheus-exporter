@@ -29,4 +29,9 @@ public class PlayersOnlineTotal extends GauageMetric {
     public String getHelp() {
         return "Unique online players";
     }
+
+    @Override
+    public String[] getLabels() {
+        return new String[]{"server"};
+    }
 }

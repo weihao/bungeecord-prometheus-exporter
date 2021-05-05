@@ -5,17 +5,22 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
 import org.akadia.prometheus.utils.Util;
 
-public abstract class CountableMetrics implements Listener, Configurable {
-    private final Plugin plugin;
+public abstract class CountableMetrics extends Metric implements Listener {
     private final Counter counter;
 
     public CountableMetrics(Plugin plugin) {
-        this.plugin = plugin;
+        super(plugin);
+
         this.counter = Counter.build()
                 .name(Util.prefix(this.getConfigKey()))
                 .labelNames(this.getLabels())
                 .help(this.getHelp())
+                .create()
                 .register();
+    }
+
+    @Override
+    public void doCollect() {
     }
 
     public Counter getCounter() {
@@ -25,9 +30,5 @@ public abstract class CountableMetrics implements Listener, Configurable {
     public abstract String getConfigKey();
 
     public abstract String getHelp();
-
-    public String[] getLabels() {
-        return new String[]{};
-    }
 
 }

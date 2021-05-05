@@ -8,12 +8,11 @@ public abstract class Metric implements Configurable {
 
     private final Plugin plugin;
 
-    protected Metric(Plugin plugin) {
+    public Metric(Plugin plugin) {
         this.plugin = plugin;
-
     }
 
-    protected Plugin getPlugin() {
+    public Plugin getPlugin() {
         return plugin;
     }
 
@@ -25,11 +24,11 @@ public abstract class Metric implements Configurable {
         }
     }
 
-    protected abstract void doCollect();
+    public abstract void doCollect();
 
     private void logException(Exception e) {
-        final Logger log = plugin.getLogger();
-        final String className = getClass().getSimpleName();
+        final Logger log = this.getPlugin().getLogger();
+        final String className = this.getClass().getSimpleName();
 
         log.warning(String.format("Failed to collect metric '%s' (see FINER log for stacktrace): %s",
                 className, e.toString()));

@@ -3,19 +3,19 @@ package org.akadia.prometheus.metrics;
 import io.prometheus.client.Collector;
 import io.prometheus.client.hotspot.GarbageCollectorExports;
 import net.md_5.bungee.api.plugin.Plugin;
-import org.akadia.prometheus.interfaces.Metric;
+import org.akadia.prometheus.interfaces.MetricWrapper;
 import org.akadia.prometheus.utils.Util;
 
 import java.util.List;
 
-public class JvmGarbageCollectorWrapper extends Metric {
+public class JvmGarbageCollectorWrapper extends MetricWrapper {
 
     public JvmGarbageCollectorWrapper(Plugin plugin) {
-        super(plugin);
+        super(plugin, new GarbageCollectorExportsCollector());
     }
 
     @Override
-    protected void doCollect() {
+    public void doCollect() {
     }
 
     @Override
@@ -25,7 +25,7 @@ public class JvmGarbageCollectorWrapper extends Metric {
 
     @Override
     public String getHelp() {
-        return null;
+        return "JVM garbage collection";
     }
 
     private static class GarbageCollectorExportsCollector extends Collector {
