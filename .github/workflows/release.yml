@@ -28,4 +28,4 @@ jobs:
         env:
           JAVA_HOME: /usr/lib/jvm/java-11-openjdk/
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          access-token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
