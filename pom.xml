@@ -163,6 +163,7 @@
                 <version>2.5.3</version>
                 <configuration>
                     <scmCommentPrefix>[ci skip]</scmCommentPrefix>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
                 </configuration>
             </plugin>
             <plugin>
