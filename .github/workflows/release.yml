@@ -30,3 +30,4 @@ jobs:
         with:
           access-token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
           release-branch-name: "main"
+          maven-args: "-DignoreSnapshots=true"
