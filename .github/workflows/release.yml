@@ -32,3 +32,6 @@ jobs:
           release-branch-name: "main"
           maven-options: "-DignoreSnapshots=true"
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          maven-repo-server-id: github
+          maven-repo-server-username: ${{ secrets.MVN_REPO_PRIVATE_REPO_USER }}
+          maven-repo-server-password: ${{ secrets.MVN_REPO_PRIVATE_REPO_PASSWORD }}
