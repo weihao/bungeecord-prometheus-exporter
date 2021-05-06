@@ -29,3 +29,4 @@ jobs:
           JAVA_HOME: /usr/lib/jvm/java-11-openjdk/
         with:
           access-token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          release-branch-name: "main"
