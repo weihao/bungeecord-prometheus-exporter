@@ -31,3 +31,4 @@ jobs:
           access-token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
           release-branch-name: "main"
           maven-options: "-DignoreSnapshots=true"
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
