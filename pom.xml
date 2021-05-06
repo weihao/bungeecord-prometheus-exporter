@@ -14,9 +14,9 @@
     <description>Bungeecord Prometheus Exporter</description>
 
     <scm>
-        <connection>scm:git:${project.scm.url}</connection>
-        <developerConnection>scm:git:${project.scm.url}</developerConnection>
-        <url>git@github.com:weihao/bungeecord-prometheus-exporter.git</url>
+        <url>https://github.com/weihao/bungeecord-prometheus-exporter</url>
+        <connection>scm:git:git://github.com/weihao/bungeecord-prometheus-exporter.git</connection>
+        <developerConnection>scm:git:git@github.com:weihao/bungeecord-prometheus-exporter.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
