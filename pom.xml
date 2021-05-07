@@ -6,7 +6,7 @@
     <groupId>org.akadia</groupId>
     <artifactId>bungeecord-prometheus-exporter</artifactId>
     <name>BungeecordPrometheusExporter</name>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <url>https://akadia.org</url>
 
