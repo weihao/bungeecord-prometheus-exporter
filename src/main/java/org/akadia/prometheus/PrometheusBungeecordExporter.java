@@ -21,6 +21,7 @@ import org.akadia.prometheus.metrics.JvmMemory;
 import org.akadia.prometheus.metrics.JvmThreadsWrapper;
 import org.akadia.prometheus.metrics.PlayersOnlineTotal;
 import org.akadia.prometheus.metrics.ServersOnlineTotal;
+import org.bstats.bungeecord.Metrics;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,8 +38,6 @@ public class PrometheusBungeecordExporter extends Plugin {
     @Override
     public void onEnable() {
         initializeConfig();
-
-
         startMetricsServer();
     }
 
@@ -77,7 +76,12 @@ public class PrometheusBungeecordExporter extends Plugin {
         } catch (Exception e) {
             getLogger().severe("Could not start embedded Jetty server");
         }
-
+        try {
+            Metrics metrics = new Metrics(this, 11269);
+        } catch (IllegalStateException ex) {
+            getLogger().info("Metrics failed to start");
+        }
+        getLogger().info("Initialized completed");
     }
 
     public void initializeConfig() {

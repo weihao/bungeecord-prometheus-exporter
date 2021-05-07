@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -44,5 +44,7 @@
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_httpserver:0.10.0" level="project" />
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_pushgateway:0.10.0" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.bstats:bstats-bungeecord:2.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.bstats:bstats-base:2.2.1" level="project" />
   </component>
 </module>
