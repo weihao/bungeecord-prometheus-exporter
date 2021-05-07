@@ -34,3 +34,5 @@ jobs:
           maven-repo-server-id: github
           maven-repo-server-username: ${{ secrets.MVN_REPO_PRIVATE_REPO_USER }}
           maven-repo-server-password: ${{ secrets.MVN_REPO_PRIVATE_REPO_PASSWORD }}
+          git-release-bot-name: ${{ secrets.BOT_NAME }}
+          git-release-bot-email: ${{ secrets.BOT_EMAIL }}
