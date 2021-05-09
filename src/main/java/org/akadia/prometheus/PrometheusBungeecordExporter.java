@@ -13,6 +13,8 @@ import org.akadia.prometheus.interfaces.MetricWrapper;
 import org.akadia.prometheus.listeners.ClientConnectEventListener;
 import org.akadia.prometheus.listeners.LoginEventListener;
 import org.akadia.prometheus.listeners.PlayerDisconnectEventListener;
+import org.akadia.prometheus.listeners.PlayerJoinedNetworkEventListener;
+import org.akadia.prometheus.listeners.PlayerLeftNetworkEventListener;
 import org.akadia.prometheus.listeners.PostLoginEventListener;
 import org.akadia.prometheus.listeners.PreLoginEventListener;
 import org.akadia.prometheus.listeners.ProxyPingEventListener;
@@ -20,6 +22,8 @@ import org.akadia.prometheus.metrics.JvmGarbageCollectorWrapper;
 import org.akadia.prometheus.metrics.JvmMemory;
 import org.akadia.prometheus.metrics.JvmThreadsWrapper;
 import org.akadia.prometheus.metrics.PlayersOnlineTotal;
+import org.akadia.prometheus.metrics.RedisBungeePlayersOnlineTotal;
+import org.akadia.prometheus.metrics.RedisBungeeProxyOnlineTotal;
 import org.akadia.prometheus.metrics.ServersOnlineTotal;
 import org.bstats.bungeecord.Metrics;
 
@@ -59,6 +63,11 @@ public class PrometheusBungeecordExporter extends Plugin {
         configurables.add(new JvmThreadsWrapper(this));
         configurables.add(new PlayersOnlineTotal(this));
         configurables.add(new ServersOnlineTotal(this));
+
+        configurables.add(new PlayerJoinedNetworkEventListener(this));
+        configurables.add(new PlayerLeftNetworkEventListener(this));
+        configurables.add(new RedisBungeePlayersOnlineTotal(this));
+        configurables.add(new RedisBungeeProxyOnlineTotal(this));
 
         for (Configurable configurable : configurables) {
             if (configurable instanceof CountableMetrics) {

@@ -9,7 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.md-5:bungeecord-api:1.16-R0.5-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.md-5:bungeecord-chat:1.16-R0.5-SNAPSHOT" level="project" />
@@ -46,5 +46,6 @@
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-bungeecord:2.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-base:2.2.1" level="project" />
+    <orderEntry type="library" name="Maven: com.github.minecrafter:RedisBungee:934e4543d6" level="project" />
   </component>
 </module>

@@ -15,6 +15,7 @@ public class JvmMemory extends GauageMetric {
         this.getGauge().labels("max").set(Runtime.getRuntime().maxMemory());
         this.getGauge().labels("free").set(Runtime.getRuntime().freeMemory());
         this.getGauge().labels("allocated").set(Runtime.getRuntime().totalMemory());
+        this.getGauge().labels("used").set(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory());
     }
 
     @Override

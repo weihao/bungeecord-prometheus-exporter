@@ -27,7 +27,7 @@ public class PlayersOnlineTotal extends GauageMetric {
 
     @Override
     public String getHelp() {
-        return "Unique online players";
+        return "unique online players";
     }
 
     @Override
