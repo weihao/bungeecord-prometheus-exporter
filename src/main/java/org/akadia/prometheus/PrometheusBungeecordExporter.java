@@ -13,8 +13,8 @@ import org.akadia.prometheus.interfaces.MetricWrapper;
 import org.akadia.prometheus.listeners.ClientConnectEventListener;
 import org.akadia.prometheus.listeners.LoginEventListener;
 import org.akadia.prometheus.listeners.PlayerDisconnectEventListener;
-import org.akadia.prometheus.listeners.PlayerJoinedNetworkEventListener;
-import org.akadia.prometheus.listeners.PlayerLeftNetworkEventListener;
+import org.akadia.prometheus.listeners.RedisPlayerJoinedNetworkEventListener;
+import org.akadia.prometheus.listeners.RedisPlayerLeftNetworkEventListener;
 import org.akadia.prometheus.listeners.PostLoginEventListener;
 import org.akadia.prometheus.listeners.PreLoginEventListener;
 import org.akadia.prometheus.listeners.ProxyPingEventListener;
@@ -64,8 +64,8 @@ public class PrometheusBungeecordExporter extends Plugin {
         configurables.add(new PlayersOnlineTotal(this));
         configurables.add(new ServersOnlineTotal(this));
 
-        configurables.add(new PlayerJoinedNetworkEventListener(this));
-        configurables.add(new PlayerLeftNetworkEventListener(this));
+        configurables.add(new RedisPlayerJoinedNetworkEventListener(this));
+        configurables.add(new RedisPlayerLeftNetworkEventListener(this));
         configurables.add(new RedisBungeePlayersOnlineTotal(this));
         configurables.add(new RedisBungeeProxyOnlineTotal(this));
 

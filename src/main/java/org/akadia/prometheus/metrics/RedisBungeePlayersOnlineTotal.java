@@ -17,10 +17,9 @@ public class RedisBungeePlayersOnlineTotal extends GauageMetric {
 
     @Override
     public void doCollect() {
-        Multimap<String, UUID> servers = RedisBungee.getApi().getServerToPlayers();
-
-        for (String key : servers.keySet()) {
-            this.getGauge().labels(key).set(servers.get(key).size());
+        for (String key : RedisBungee.getApi().getAllServers()) {
+            int size = RedisBungee.getApi().getPlayersOnServer(key).size();
+            this.getGauge().labels(key).set(size);
         }
     }
 

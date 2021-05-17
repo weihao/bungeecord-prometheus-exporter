@@ -5,9 +5,9 @@ import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.event.EventHandler;
 import org.akadia.prometheus.interfaces.CountableMetrics;
 
-public class PlayerLeftNetworkEventListener extends CountableMetrics {
+public class RedisPlayerLeftNetworkEventListener extends CountableMetrics {
 
-    public PlayerLeftNetworkEventListener(Plugin plugin) {
+    public RedisPlayerLeftNetworkEventListener(Plugin plugin) {
         super(plugin);
     }
 

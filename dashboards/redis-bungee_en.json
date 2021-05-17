@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 5,
-  "iteration": 1620510782651,
+  "iteration": 1621211903140,
   "links": [],
   "panels": [
     {
@@ -55,7 +55,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -66,9 +66,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_players_online_total",
+          "expr": "sum by (server) (bungee_players_online_total)",
           "interval": "",
-          "legendFormat": "{{server_name}} {{server}}",
+          "legendFormat": "{{server}}",
           "refId": "A"
         },
         {
@@ -160,7 +160,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -171,49 +171,42 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_handshake_total[1m])",
-          "interval": "",
-          "legendFormat": "{{server_name}} player handshakes",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "increase(bungee_ping_total[1m])",
+          "expr": "sum(increase(bungee_ping_total[1m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{server_name}} server list pings",
+          "legendFormat": "server list pings",
           "refId": "B"
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_client_connect_total[1m])",
+          "expr": "sum(increase(bungee_client_connect_total[1m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{server_name}} player connects",
+          "legendFormat": "client connects",
           "refId": "C"
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_pre_login_total[1m])",
+          "expr": "sum(increase(bungee_pre_login_total[1m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{server_name}} player pre logins",
+          "legendFormat": "player pre logins",
           "refId": "D"
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_post_login_total[1m])",
+          "expr": "sum(increase(bungee_post_login_total[1m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{server_name}} player post logins",
+          "legendFormat": "player post logins",
           "refId": "E"
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_disconnects_total[1m])",
+          "expr": "sum(increase(bungee_player_disconnects_total[1m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{server_name}} player disconnects",
+          "legendFormat": "player disconnects",
           "refId": "F"
         }
       ],
@@ -285,13 +278,17 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
+        "h": 3,
         "w": 3,
         "x": 21,
         "y": 0
       },
       "id": 13,
       "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -299,11 +296,10 @@
           "fields": "",
           "values": false
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "text": {},
+        "textMode": "auto"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "7.5.5",
       "repeat": null,
       "targets": [
         {
@@ -315,7 +311,7 @@
         }
       ],
       "title": "Servers",
-      "type": "gauge"
+      "type": "stat"
     },
     {
       "datasource": null,
@@ -326,28 +322,34 @@
           },
           "displayName": "🚀",
           "mappings": [],
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
-          },
-          "unit": "none"
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
+        "h": 3,
         "w": 3,
         "x": 21,
-        "y": 5
+        "y": 3
       },
       "id": 18,
       "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -355,11 +357,10 @@
           "fields": "",
           "values": false
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "text": {},
+        "textMode": "auto"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -370,6 +371,82 @@
         }
       ],
       "title": "Online Proxies",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "",
+          "links": [],
+          "mappings": [],
+          "max": 4000000000,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 3000000000
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 21,
+        "y": 6
+      },
+      "id": 9,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.5",
+      "repeat": "proxies",
+      "repeatDirection": "v",
+      "scopedVars": {
+        "proxies": {
+          "selected": false,
+          "text": "proxy1",
+          "value": "proxy1"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "bungee_jvm_memory{type='allocated', server_name=~\"$proxies\"} - scalar(bungee_jvm_memory{type='free', server_name=~\"$proxies\"})",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$proxies JVM Memory",
       "type": "gauge"
     },
     {
@@ -408,7 +485,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -513,7 +590,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "7.5.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -526,7 +603,7 @@
         {
           "exemplar": true,
           "expr": "bungee_jvm_memory{type='used'}",
-          "hide": false,
+          "hide": true,
           "interval": "",
           "legendFormat": "{{server_name}} used",
           "refId": "C"
@@ -615,83 +692,7 @@
         "h": 5,
         "w": 3,
         "x": 21,
-        "y": 10
-      },
-      "id": 9,
-      "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
-      },
-      "pluginVersion": "7.5.4",
-      "repeat": "proxies",
-      "repeatDirection": "v",
-      "scopedVars": {
-        "proxies": {
-          "selected": false,
-          "text": "proxy1",
-          "value": "proxy1"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "bungee_jvm_memory{type='allocated', server_name=~\"$proxies\"} - scalar(bungee_jvm_memory{type='free', server_name=~\"$proxies\"})",
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$proxies JVM Memory",
-      "type": "gauge"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "displayName": "",
-          "links": [],
-          "mappings": [],
-          "max": 4000000000,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 3000000000
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 21,
-        "y": 15
+        "y": 11
       },
       "id": 19,
       "options": {
@@ -707,9 +708,9 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "7.5.5",
       "repeatDirection": "v",
-      "repeatIteration": 1620510782651,
+      "repeatIteration": 1621211903140,
       "repeatPanelId": 9,
       "scopedVars": {
         "proxies": {
@@ -844,5 +845,5 @@
   "timezone": "",
   "title": "Bungeecord-cord",
   "uid": "random",
-  "version": 17
+  "version": 2
 }
