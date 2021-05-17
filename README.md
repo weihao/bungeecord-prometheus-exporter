@@ -23,6 +23,38 @@ If running inside the docker, change the host to `0.0.0.0` to allow Prometheus a
 
 The metrics port can be customized in the plugin's config.yml (a default config will be created after the first use).
 
+## Prometheus config
+
+Add the following job to the ``scrape_configs`` section of your Prometheus configuration `prometheus.yml`:
+
+### Single Proxy
+
+```yml
+  - job_name: 'bungeecord'
+    scrape_interval: 5s
+
+    static_configs:
+       - targets: ['localhost:9225']
+         labels:
+            server_name: 'proxy1'
+```
+
+### Multiple proxies
+
+You can use labels in your Prometheus scrape configuration to distinguish between multiple proxies:
+```yml
+  - job_name: 'bungeecord'
+    scrape_interval: 5s
+
+    static_configs:
+       - targets: ['localhost:9225']
+         labels:
+            server_name: 'proxy1'
+       - targets: ['localhost:9226']
+         labels:
+            server_name: 'proxy2'
+```
+
 ## Import Grafana Dashboard
 
 1. Navigate to Grafana -> Dashboards -> Import
