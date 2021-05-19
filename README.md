@@ -1,3 +1,5 @@
+![GitHub all releases](https://img.shields.io/github/downloads/weihao/bungeecord-prometheus-exporter/total)
+
 # Bungeecord Prometheus Exporter
 
 A **Bungee plugin** which exports network stats for Prometheus.
