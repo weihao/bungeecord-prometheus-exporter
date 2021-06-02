@@ -110,9 +110,10 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.minecrafter</groupId>
+            <groupId>com.github.Limework</groupId>
             <artifactId>RedisBungee</artifactId>
-            <version>934e4543d6</version>
+            <version>0.6.3</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
