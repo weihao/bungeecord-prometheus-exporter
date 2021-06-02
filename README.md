@@ -1,3 +1,4 @@
+[![Release](https://github.com/weihao/bungeecord-prometheus-exporter/actions/workflows/release.yml/badge.svg)](https://github.com/weihao/bungeecord-prometheus-exporter/actions/workflows/release.yml)
 ![GitHub all releases](https://img.shields.io/github/downloads/weihao/bungeecord-prometheus-exporter/total)
 
 # Bungeecord Prometheus Exporter
