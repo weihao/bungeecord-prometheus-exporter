@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 6,
-  "iteration": 1622597668219,
+  "iteration": 1622602499686,
   "links": [],
   "panels": [
     {
@@ -187,9 +187,9 @@
         {
           "exemplar": true,
           "expr": "increase(bungee_client_connect_total{server_name=~\"$servers\"}[1m])",
-          "hide": false,
+          "hide": true,
           "interval": "",
-          "legendFormat": "player connects",
+          "legendFormat": "client connects",
           "refId": "C"
         },
         {
