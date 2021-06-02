@@ -12,3 +12,7 @@ enable_metrics:
   post_login_total: true
   pre_login_total: true
   ping_total: true
+  redis_player_joins_total: false
+  redis_player_disconnects_total: false
+  redis_players_online_total: false
+  redis_bungee_proxies_online_total: false

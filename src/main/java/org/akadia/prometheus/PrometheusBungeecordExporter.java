@@ -13,11 +13,11 @@ import org.akadia.prometheus.interfaces.MetricWrapper;
 import org.akadia.prometheus.listeners.ClientConnectEventListener;
 import org.akadia.prometheus.listeners.LoginEventListener;
 import org.akadia.prometheus.listeners.PlayerDisconnectEventListener;
-import org.akadia.prometheus.listeners.RedisPlayerJoinedNetworkEventListener;
-import org.akadia.prometheus.listeners.RedisPlayerLeftNetworkEventListener;
 import org.akadia.prometheus.listeners.PostLoginEventListener;
 import org.akadia.prometheus.listeners.PreLoginEventListener;
 import org.akadia.prometheus.listeners.ProxyPingEventListener;
+import org.akadia.prometheus.listeners.RedisPlayerJoinedNetworkEventListener;
+import org.akadia.prometheus.listeners.RedisPlayerLeftNetworkEventListener;
 import org.akadia.prometheus.metrics.JvmGarbageCollectorWrapper;
 import org.akadia.prometheus.metrics.JvmMemory;
 import org.akadia.prometheus.metrics.JvmThreadsWrapper;
@@ -70,6 +70,12 @@ public class PrometheusBungeecordExporter extends Plugin {
         configurables.add(new RedisBungeeProxyOnlineTotal(this));
 
         for (Configurable configurable : configurables) {
+            String configKey = "enable_metrics." + configurable.getConfigKey();
+            if (!config.getBoolean(configKey)) {
+                getLogger().info(configKey + " is disabled in the config");
+                continue;
+            }
+            getLogger().info(configKey + " is enabled in the config");
             if (configurable instanceof CountableMetrics) {
                 this.getProxy().getPluginManager().registerListener(this, (Listener) configurable);
             } else if (configurable instanceof MetricWrapper) {
