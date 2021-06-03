@@ -261,7 +261,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "displayName": "🚀",
           "mappings": [],
           "min": 0,
           "thresholds": {
@@ -287,7 +286,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -320,7 +319,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "displayName": "🚀",
           "mappings": [],
           "min": 0,
           "thresholds": {
@@ -346,7 +344,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -378,7 +376,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "displayName": "🚀",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -406,7 +403,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -903,5 +900,5 @@
   "timezone": "",
   "title": "RedisBungee",
   "uid": "random",
-  "version": 2
+  "version": 3
 }
