@@ -112,7 +112,7 @@
         <dependency>
             <groupId>com.github.Limework</groupId>
             <artifactId>RedisBungee</artifactId>
-            <version>0.6.3</version>
+            <version>0.6.4</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
