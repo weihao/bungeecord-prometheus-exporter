@@ -66,14 +66,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_players_online_total{server_name=~\"$servers\"}",
+          "expr": "bungee_online_players{server_name=~\"$servers\"}",
           "interval": "",
           "legendFormat": "{{server}}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum(bungee_players_online_total{server_name=~\"$servers\"})",
+          "expr": "sum(bungee_online_players{server_name=~\"$servers\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "total",
@@ -171,14 +171,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_handshake_total{server_name=~\"$servers\"}[1m])",
+          "expr": "increase(bungee_player_handshakes{server_name=~\"$servers\"}[1m])",
           "interval": "",
           "legendFormat": "player handshakes",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_ping_total{server_name=~\"$servers\"}[1m])",
+          "expr": "increase(bungee_pings{server_name=~\"$servers\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "server list pings",
@@ -186,7 +186,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_client_connect_total{server_name=~\"$servers\"}[1m])",
+          "expr": "increase(bungee_client_connects{server_name=~\"$servers\"}[1m])",
           "hide": true,
           "interval": "",
           "legendFormat": "client connects",
@@ -194,7 +194,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_pre_login_total{server_name=~\"$servers\"}[1m])",
+          "expr": "increase(bungee_pre_logins{server_name=~\"$servers\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "player pre logins",
@@ -202,7 +202,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_post_login_total{server_name=~\"$servers\"}[1m])",
+          "expr": "increase(bungee_post_logins{server_name=~\"$servers\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "player post logins",
@@ -210,7 +210,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_disconnects_total{server_name=~\"$servers\"}[1m])",
+          "expr": "increase(bungee_player_disconnects{server_name=~\"$servers\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "player disconnects",
@@ -475,7 +475,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_servers_online_total{server_name=~\"$servers\"}",
+          "expr": "bungee_servers_onlines{server_name=~\"$servers\"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"

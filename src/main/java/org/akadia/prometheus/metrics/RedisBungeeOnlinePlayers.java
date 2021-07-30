@@ -9,9 +9,9 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.UUID;
 
-public class RedisBungeePlayersOnlineTotal extends GauageMetric {
+public class RedisBungeeOnlinePlayers extends GauageMetric {
 
-    public RedisBungeePlayersOnlineTotal(Plugin plugin) {
+    public RedisBungeeOnlinePlayers(Plugin plugin) {
         super(plugin);
     }
 
@@ -25,12 +25,12 @@ public class RedisBungeePlayersOnlineTotal extends GauageMetric {
 
     @Override
     public String getConfigKey() {
-        return "redis_players_online_total";
+        return "redis_online_players";
     }
 
     @Override
     public String getHelp() {
-        return "unique redisbungee players";
+        return "online redisbungee players";
     }
 
     @Override

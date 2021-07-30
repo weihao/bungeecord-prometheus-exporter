@@ -18,7 +18,7 @@ public class RedisPlayerJoinedNetworkEventListener extends CountableMetrics {
 
     @Override
     public String getConfigKey() {
-        return "redis_player_joins_total";
+        return "redis_joined_players";
     }
 
     @Override

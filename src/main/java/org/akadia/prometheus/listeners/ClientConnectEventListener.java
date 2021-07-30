@@ -19,12 +19,12 @@ public class ClientConnectEventListener extends CountableMetrics {
 
     @Override
     public String getConfigKey() {
-        return "client_connect_total";
+        return "player_connects";
     }
 
     @Override
     public String getHelp() {
-        return "total client connect";
+        return "client connect";
     }
 
 

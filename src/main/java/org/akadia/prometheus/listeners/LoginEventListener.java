@@ -18,12 +18,12 @@ public class LoginEventListener extends CountableMetrics {
 
     @Override
     public String getHelp() {
-        return "total logins";
+        return "logins";
     }
 
     @Override
     public String getConfigKey() {
-        return "login_total";
+        return "logins";
     }
 
 }

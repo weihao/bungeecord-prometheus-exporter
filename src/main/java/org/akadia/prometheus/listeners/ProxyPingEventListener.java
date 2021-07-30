@@ -23,6 +23,6 @@ public class ProxyPingEventListener extends CountableMetrics {
 
     @Override
     public String getConfigKey() {
-        return "ping_total";
+        return "pings";
     }
 }

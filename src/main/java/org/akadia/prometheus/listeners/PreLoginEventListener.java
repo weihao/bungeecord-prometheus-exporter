@@ -23,6 +23,6 @@ public class PreLoginEventListener extends CountableMetrics {
 
     @Override
     public String getConfigKey() {
-        return "pre_login_total";
+        return "pre_logins";
     }
 }

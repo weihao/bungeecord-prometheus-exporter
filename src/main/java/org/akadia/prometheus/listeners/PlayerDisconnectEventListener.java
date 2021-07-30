@@ -18,7 +18,7 @@ public class PlayerDisconnectEventListener extends CountableMetrics {
 
     @Override
     public String getConfigKey() {
-        return "player_disconnects_total";
+        return "player_disconnects";
     }
 
     @Override

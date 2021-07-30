@@ -23,6 +23,6 @@ public class PostLoginEventListener extends CountableMetrics {
 
     @Override
     public String getConfigKey() {
-        return "post_login_total";
+        return "post_logins";
     }
 }

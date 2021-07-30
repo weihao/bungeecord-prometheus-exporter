@@ -25,6 +25,7 @@ public class Util {
             Collector.MetricFamilySamples prefixed = new Collector.MetricFamilySamples(Util.prefix(mSample.name), mSample.type, mSample.help, samples);
             mfs.add(prefixed);
         }
+
         return mfs;
     }
 }

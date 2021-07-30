@@ -4,15 +4,15 @@ enable_metrics:
   jvm_gc: true
   jvm_memory: true
   jvm_threads: true
-  players_online_total: true
-  servers_online_total: true
-  client_connect_total: true
-  login_total: true
-  player_disconnects_total: true
-  post_login_total: true
-  pre_login_total: true
-  ping_total: true
-  redis_player_joins_total: false
-  redis_player_disconnects_total: false
-  redis_players_online_total: false
-  redis_bungee_proxies_online_total: false
+  online_players: true
+  online_servers: true
+  player_connects: true
+  logins: true
+  player_disconnects: true
+  post_logins: true
+  pre_logins: true
+  pings: true
+  redis_joined_players: true
+  redis_disconnected_players: true
+  redis_online_players: true
+  redis_bungee_online_proxies: true

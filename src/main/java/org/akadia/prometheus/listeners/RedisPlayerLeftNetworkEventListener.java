@@ -18,7 +18,7 @@ public class RedisPlayerLeftNetworkEventListener extends CountableMetrics {
 
     @Override
     public String getConfigKey() {
-        return "redis_player_disconnects_total";
+        return "redis_disconnected_players";
     }
 
     @Override

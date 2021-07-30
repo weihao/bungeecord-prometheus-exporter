@@ -6,9 +6,9 @@ import org.akadia.prometheus.interfaces.GauageMetric;
 
 import java.util.Map;
 
-public class PlayersOnlineTotal extends GauageMetric {
+public class  OnlinePlayers extends GauageMetric {
 
-    public PlayersOnlineTotal(Plugin plugin) {
+    public OnlinePlayers(Plugin plugin) {
         super(plugin);
     }
 
@@ -22,7 +22,7 @@ public class PlayersOnlineTotal extends GauageMetric {
 
     @Override
     public String getConfigKey() {
-        return "players_online_total";
+        return "online_players";
     }
 
     @Override

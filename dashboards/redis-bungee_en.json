@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 4,
-  "iteration": 1622699463935,
+  "id": 3,
+  "iteration": 1627606434142,
   "links": [],
   "panels": [
     {
@@ -25,15 +25,11 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 10,
-        "w": 11,
+        "h": 13,
+        "w": 12,
         "x": 0,
         "y": 0
       },
@@ -55,7 +51,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.6",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -66,15 +62,16 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (server) (bungee_players_online_total)",
+          "expr": "sum by (server) (bungee_online_players)",
+          "hide": false,
           "interval": "",
           "legendFormat": "{{server}}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum(bungee_players_online_total)",
-          "hide": false,
+          "expr": "sum(bungee_online_players)",
+          "hide": true,
           "interval": "",
           "legendFormat": "total",
           "refId": "B"
@@ -130,16 +127,12 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 10,
       "gridPos": {
         "h": 10,
-        "w": 10,
-        "x": 11,
+        "w": 12,
+        "x": 12,
         "y": 0
       },
       "hiddenSeries": false,
@@ -160,7 +153,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.6",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -171,7 +164,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(increase(bungee_ping_total[1m]))",
+          "expr": "sum(increase(bungee_pings_total[1m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "server list pings",
@@ -179,26 +172,26 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(increase(bungee_client_connect_total[1m]))",
+          "expr": "sum(increase(bungee_player_connects_total[1m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "client connects",
+          "legendFormat": "connects",
           "refId": "C"
         },
         {
           "exemplar": true,
-          "expr": "sum(increase(bungee_pre_login_total[1m]))",
+          "expr": "sum(increase(bungee_pre_logins_total[1m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "player pre logins",
+          "legendFormat": "pre logins",
           "refId": "D"
         },
         {
           "exemplar": true,
-          "expr": "sum(increase(bungee_post_login_total[1m]))",
+          "expr": "sum(increase(bungee_post_logins_total[1m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "player post logins",
+          "legendFormat": "post logins",
           "refId": "E"
         },
         {
@@ -206,7 +199,7 @@
           "expr": "sum(increase(bungee_player_disconnects_total[1m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "player disconnects",
+          "legendFormat": "disconnects",
           "refId": "F"
         }
       ],
@@ -267,7 +260,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "blue",
                 "value": null
               }
             ]
@@ -277,10 +270,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 21,
-        "y": 0
+        "h": 3,
+        "w": 4,
+        "x": 12,
+        "y": 10
       },
       "id": 13,
       "options": {
@@ -298,12 +291,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.6",
       "repeat": null,
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(bungee_players_online_total)",
+          "expr": "sum(bungee_online_players)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -320,31 +313,29 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "blue",
                 "value": null
               }
             ]
-          },
-          "unit": "none"
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 21,
-        "y": 4
+        "h": 10,
+        "w": 4,
+        "x": 16,
+        "y": 10
       },
-      "id": 20,
+      "id": 24,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "center",
+        "graphMode": "none",
+        "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -356,17 +347,49 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_servers_online_total{server_name=~\"$main\"}",
+          "expr": "increase(bungee_pings_total[1h])",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "list pings",
           "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "increase(bungee_pre_logins_total[1h])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "pre logins",
+          "refId": "G"
+        },
+        {
+          "exemplar": true,
+          "expr": "increase(bungee_post_logins_total[1h])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "post logins",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "increase(bungee_player_connects_total[1h])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "connects",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "increase(bungee_player_disconnects_total[1h])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "disconnects",
+          "refId": "D"
         }
       ],
-      "title": "Servers",
+      "title": "hourly",
       "type": "stat"
     },
     {
@@ -381,29 +404,26 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "blue",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
-          }
+          },
+          "unit": "short"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 21,
-        "y": 7
+        "h": 10,
+        "w": 4,
+        "x": 20,
+        "y": 10
       },
-      "id": 18,
+      "id": 25,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "center",
+        "graphMode": "none",
+        "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -415,17 +435,49 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_redis_bungee_proxies_online_total{server_name=~\"$main\"}",
+          "expr": "increase(bungee_pings_total[1d])",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "list pings",
           "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "increase(bungee_pre_logins_total[1d])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "pre logins",
+          "refId": "G"
+        },
+        {
+          "exemplar": true,
+          "expr": "increase(bungee_post_logins_total[1d])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "post logins",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "increase(bungee_player_connects_total[1d])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "connects",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "increase(bungee_player_disconnects_total[1d])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "disconnects",
+          "refId": "D"
         }
       ],
-      "title": "Proxies",
+      "title": "daily",
       "type": "stat"
     },
     {
@@ -434,17 +486,13 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 1,
       "gridPos": {
-        "h": 10,
-        "w": 11,
+        "h": 7,
+        "w": 5,
         "x": 0,
-        "y": 10
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 11,
@@ -464,7 +512,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.6",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -531,53 +579,79 @@
       }
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
-        "h": 10,
-        "w": 10,
-        "x": 11,
-        "y": 10
+        "h": 7,
+        "w": 7,
+        "x": 5,
+        "y": 13
       },
-      "hiddenSeries": false,
       "id": 5,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "connected",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
+      "pluginVersion": "8.0.6",
       "repeat": null,
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": true,
       "targets": [
         {
           "exemplar": true,
@@ -596,46 +670,122 @@
           "refId": "A"
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "JVM Memory",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bytes",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
         },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 12,
+        "y": 13
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.6",
+      "targets": [
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+          "exemplar": true,
+          "expr": "bungee_redis_bungee_online_proxies{server_name=~\"$main\"}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
         }
       ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "title": "RedisBungee Proxies",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 12,
+        "y": 16
+      },
+      "id": 20,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.6",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "bungee_online_servers{server_name=~\"$main\"}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Servers",
+      "type": "stat"
     },
     {
       "datasource": null,
@@ -654,7 +804,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "blue",
                 "value": null
               },
               {
@@ -668,10 +818,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 21,
-        "y": 10
+        "h": 4,
+        "w": 2,
+        "x": 14,
+        "y": 16
       },
       "id": 9,
       "options": {
@@ -687,16 +837,9 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.6",
       "repeat": "proxies",
       "repeatDirection": "v",
-      "scopedVars": {
-        "proxies": {
-          "selected": false,
-          "text": "proxy1",
-          "value": "proxy1"
-        }
-      },
       "targets": [
         {
           "exemplar": true,
@@ -710,89 +853,12 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "$proxies JVM Memory",
-      "type": "gauge"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "displayName": "",
-          "links": [],
-          "mappings": [],
-          "max": 4000000000,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 3000000000
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 21,
-        "y": 15
-      },
-      "id": 19,
-      "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
-      },
-      "pluginVersion": "7.5.5",
-      "repeatDirection": "v",
-      "repeatIteration": 1622699463935,
-      "repeatPanelId": 9,
-      "scopedVars": {
-        "proxies": {
-          "selected": false,
-          "text": "proxy2",
-          "value": "proxy2"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "bungee_jvm_memory{type='allocated', server_name=~\"$proxies\"} - scalar(bungee_jvm_memory{type='free', server_name=~\"$proxies\"})",
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$proxies JVM Memory",
+      "title": "$proxies ram",
       "type": "gauge"
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 27,
+  "schemaVersion": 30,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -800,7 +866,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -817,33 +883,16 @@
         "label": null,
         "multi": true,
         "name": "proxies",
-        "options": [
-          {
-            "selected": true,
-            "text": "All",
-            "value": "$__all"
-          },
-          {
-            "selected": false,
-            "text": "proxy1",
-            "value": "proxy1"
-          },
-          {
-            "selected": false,
-            "text": "proxy2",
-            "value": "proxy2"
-          }
-        ],
+        "options": [],
         "query": {
           "query": "bungee_jvm_memory",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": ".*server_name=\"(.*?)\".*",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -851,12 +900,12 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "proxy1",
-          "value": "proxy1"
+          "selected": true,
+          "text": "proxy",
+          "value": "proxy"
         },
         "datasource": null,
-        "definition": "bungee_servers_online_total",
+        "definition": "bungee_online_servers",
         "description": null,
         "error": null,
         "hide": 0,
@@ -864,28 +913,16 @@
         "label": null,
         "multi": false,
         "name": "main",
-        "options": [
-          {
-            "selected": true,
-            "text": "proxy1",
-            "value": "proxy1"
-          },
-          {
-            "selected": false,
-            "text": "proxy2",
-            "value": "proxy2"
-          }
-        ],
+        "options": [],
         "query": {
-          "query": "bungee_servers_online_total",
+          "query": "bungee_online_servers",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": ".*server_name=\"(.*?)\".*",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -899,6 +936,6 @@
   "timepicker": {},
   "timezone": "",
   "title": "RedisBungee",
-  "uid": "random",
-  "version": 3
+  "uid": "Vd2HgXZ7k",
+  "version": 12
 }

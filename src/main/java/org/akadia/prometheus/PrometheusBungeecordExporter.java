@@ -21,10 +21,10 @@ import org.akadia.prometheus.listeners.RedisPlayerLeftNetworkEventListener;
 import org.akadia.prometheus.metrics.JvmGarbageCollectorWrapper;
 import org.akadia.prometheus.metrics.JvmMemory;
 import org.akadia.prometheus.metrics.JvmThreadsWrapper;
-import org.akadia.prometheus.metrics.PlayersOnlineTotal;
-import org.akadia.prometheus.metrics.RedisBungeePlayersOnlineTotal;
-import org.akadia.prometheus.metrics.RedisBungeeProxyOnlineTotal;
-import org.akadia.prometheus.metrics.ServersOnlineTotal;
+import org.akadia.prometheus.metrics.OnlinePlayers;
+import org.akadia.prometheus.metrics.RedisBungeeOnlinePlayers;
+import org.akadia.prometheus.metrics.RedisBungeeOnlineProxies;
+import org.akadia.prometheus.metrics.OnlineServers;
 import org.bstats.bungeecord.Metrics;
 
 import java.io.File;
@@ -61,13 +61,13 @@ public class PrometheusBungeecordExporter extends Plugin {
         configurables.add(new JvmGarbageCollectorWrapper(this));
         configurables.add(new JvmMemory(this));
         configurables.add(new JvmThreadsWrapper(this));
-        configurables.add(new PlayersOnlineTotal(this));
-        configurables.add(new ServersOnlineTotal(this));
+        configurables.add(new OnlinePlayers(this));
+        configurables.add(new OnlineServers(this));
 
         configurables.add(new RedisPlayerJoinedNetworkEventListener(this));
         configurables.add(new RedisPlayerLeftNetworkEventListener(this));
-        configurables.add(new RedisBungeePlayersOnlineTotal(this));
-        configurables.add(new RedisBungeeProxyOnlineTotal(this));
+        configurables.add(new RedisBungeeOnlinePlayers(this));
+        configurables.add(new RedisBungeeOnlineProxies(this));
 
         for (Configurable configurable : configurables) {
             String configKey = "enable_metrics." + configurable.getConfigKey();
