@@ -14,6 +14,10 @@ A **Bungee plugin** which exports network stats for Prometheus.
 - automates the collection, management and viewing of your data
 - get alerts for service outages
 
+## Requirement 
+- Java 11+
+- Bungeecord / Waterfall
+
 ## Quick Start
 
 Drop the bungeecord-prometheus-exporter.jar into your Bungeecord plugins directory and start your Bungeecord proxy
