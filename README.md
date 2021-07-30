@@ -63,7 +63,7 @@ You can use labels in your Prometheus scrape configuration to distinguish betwee
 1. Navigate to Grafana -> Dashboards -> Import
 1. Paste in or
    upload [default dashboard](https://github.com/weihao/bungeecord-prometheus-exporter/tree/main/dashboards)
-1. ![default dashboard](https://raw.githubusercontent.com/weihao/bungeecord-prometheus-exporter/main/images/dashboard.jpg)
+1. ![default dashboard](https://raw.githubusercontent.com/weihao/bungeecord-prometheus-exporter/main/images/dashboard.png)
 
 ## Notes
 
