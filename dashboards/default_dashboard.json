@@ -81,7 +81,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Total Online Players",
+      "title": "Online Players",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -207,7 +207,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Total Events",
+      "title": "Events",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -302,7 +302,7 @@
           "refId": "A"
         }
       ],
-      "title": "Players",
+      "title": "Player Count",
       "type": "stat"
     },
     {
@@ -389,7 +389,7 @@
           "refId": "D"
         }
       ],
-      "title": "hourly",
+      "title": "Hourly Stats",
       "type": "stat"
     },
     {
@@ -477,7 +477,7 @@
           "refId": "D"
         }
       ],
-      "title": "daily",
+      "title": "Daily Stats",
       "type": "stat"
     },
     {
@@ -853,7 +853,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "$proxies ram",
+      "title": "$proxies RAM",
       "type": "gauge"
     }
   ],
@@ -937,5 +937,5 @@
   "timezone": "",
   "title": "RedisBungee",
   "uid": "Vd2HgXZ7k",
-  "version": 12
+  "version": 13
 }
