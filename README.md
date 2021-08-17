@@ -71,3 +71,4 @@ You can use labels in your Prometheus scrape configuration to distinguish betwee
 
 ## Notes
 
+RedisBungee is supported but disabled by default. RedisBungee metrics are not used in the dashboard because we are already collecting metrics from single instances. However if you still want to integerate with RedisBungee, free feel to enable it and modify the dashboard.
