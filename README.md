@@ -43,7 +43,7 @@ Add the following job to the ``scrape_configs`` section of your Prometheus confi
     static_configs:
        - targets: ['localhost:9225']
          labels:
-            server_name: 'proxy1'
+            proxy_name: 'proxy1'
 ```
 
 ### Multiple proxies
@@ -56,10 +56,10 @@ You can use labels in your Prometheus scrape configuration to distinguish betwee
     static_configs:
        - targets: ['localhost:9225']
          labels:
-            server_name: 'proxy1'
+            proxy_name: 'proxy1'
        - targets: ['localhost:9226']
          labels:
-            server_name: 'proxy2'
+            proxy_name: 'proxy2'
 ```
 
 ## Import Grafana Dashboard
