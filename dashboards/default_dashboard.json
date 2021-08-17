@@ -8,6 +8,12 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
@@ -15,8 +21,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 3,
-  "iteration": 1627606434142,
+  "id": 4,
+  "iteration": 1629242426257,
   "links": [],
   "panels": [
     {
@@ -51,7 +57,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -62,7 +68,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (server) (bungee_online_players)",
+          "expr": "sum by (server) (bungee_online_players{proxy_name=~\"$proxy\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "{{server}}",
@@ -70,7 +76,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(bungee_online_players)",
+          "expr": "sum(bungee_online_players{proxy_name=~\"$proxy\"})",
           "hide": true,
           "interval": "",
           "legendFormat": "total",
@@ -153,7 +159,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -164,7 +170,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(increase(bungee_pings_total[1m]))",
+          "expr": "sum(increase(bungee_pings_total{proxy_name=~\"$proxy\"}[1m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "server list pings",
@@ -172,7 +178,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(increase(bungee_player_connects_total[1m]))",
+          "expr": "sum(increase(bungee_player_connects_total{proxy_name=~\"$proxy\"}[1m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "connects",
@@ -180,7 +186,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(increase(bungee_pre_logins_total[1m]))",
+          "expr": "sum(increase(bungee_pre_logins_total{proxy_name=~\"$proxy\"}[1m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "pre logins",
@@ -188,7 +194,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(increase(bungee_post_logins_total[1m]))",
+          "expr": "sum(increase(bungee_post_logins_total{proxy_name=~\"$proxy\"}[1m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "post logins",
@@ -196,7 +202,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(increase(bungee_player_disconnects_total[1m]))",
+          "expr": "sum(increase(bungee_player_disconnects_total{proxy_name=~\"$proxy\"}[1m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "disconnects",
@@ -291,12 +297,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.1",
       "repeat": null,
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(bungee_online_players)",
+          "expr": "sum(bungee_online_players{proxy_name=~\"$proxy\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -347,18 +353,18 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.1",
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(bungee_pings_total[1h])",
+          "expr": "increase(bungee_pings_total{proxy_name=~\"$proxy\"}[1h])",
           "interval": "",
           "legendFormat": "list pings",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_pre_logins_total[1h])",
+          "expr": "increase(bungee_pre_logins_total{proxy_name=~\"$proxy\"}[1h])",
           "hide": false,
           "interval": "",
           "legendFormat": "pre logins",
@@ -366,7 +372,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_post_logins_total[1h])",
+          "expr": "increase(bungee_post_logins_total{proxy_name=~\"$proxy\"}[1h])",
           "hide": false,
           "interval": "",
           "legendFormat": "post logins",
@@ -374,7 +380,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_connects_total[1h])",
+          "expr": "increase(bungee_player_connects_total{proxy_name=~\"$proxy\"}[1h])",
           "hide": false,
           "interval": "",
           "legendFormat": "connects",
@@ -382,7 +388,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_disconnects_total[1h])",
+          "expr": "increase(bungee_player_disconnects_total{proxy_name=~\"$proxy\"}[1h])",
           "hide": false,
           "interval": "",
           "legendFormat": "disconnects",
@@ -435,18 +441,18 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.1",
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(bungee_pings_total[1d])",
+          "expr": "increase(bungee_pings_total{proxy_name=~\"$proxy\"}[1d])",
           "interval": "",
           "legendFormat": "list pings",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_pre_logins_total[1d])",
+          "expr": "increase(bungee_pre_logins_total{proxy_name=~\"$proxy\"}[1d])",
           "hide": false,
           "interval": "",
           "legendFormat": "pre logins",
@@ -454,7 +460,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_post_logins_total[1d])",
+          "expr": "increase(bungee_post_logins_total{proxy_name=~\"$proxy\"}[1d])",
           "hide": false,
           "interval": "",
           "legendFormat": "post logins",
@@ -462,7 +468,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_connects_total[1d])",
+          "expr": "increase(bungee_player_connects_total{proxy_name=~\"$proxy\"}[1d])",
           "hide": false,
           "interval": "",
           "legendFormat": "connects",
@@ -470,7 +476,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_disconnects_total[1d])",
+          "expr": "increase(bungee_player_disconnects_total{proxy_name=~\"$proxy\"}[1d])",
           "hide": false,
           "interval": "",
           "legendFormat": "disconnects",
@@ -512,7 +518,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -523,14 +529,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_jvm_threads_current",
+          "expr": "bungee_jvm_threads_current{proxy_name=~\"$proxy\"}",
           "interval": "",
           "legendFormat": "{{server_name}} TOTAL",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "bungee_jvm_threads_state",
+          "expr": "bungee_jvm_threads_state{proxy_name=~\"$proxy\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "{{server_name}} {{state}}",
@@ -655,7 +661,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_jvm_memory{type='used'}",
+          "expr": "bungee_jvm_memory{type='used',proxy_name=~\"$proxy\"}",
           "hide": true,
           "interval": "",
           "legendFormat": "{{server_name}} used",
@@ -663,7 +669,7 @@
         },
         {
           "exemplar": true,
-          "expr": "bungee_jvm_memory{type='free'}",
+          "expr": "bungee_jvm_memory{type='free',proxy_name=~\"$proxy\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "{{server_name}} free",
@@ -717,17 +723,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.1",
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_redis_bungee_online_proxies{server_name=~\"$main\"}",
+          "expr": "count(count(bungee_jvm_memory{proxy_name=~\".*\"}) by (proxy_name))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "RedisBungee Proxies",
+      "title": "Online Proxies",
       "type": "stat"
     },
     {
@@ -774,11 +780,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.1",
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_online_servers{server_name=~\"$main\"}",
+          "expr": "bungee_online_servers{proxy_name=~\"$proxy\"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -837,13 +843,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "8.1.1",
       "repeat": "proxies",
       "repeatDirection": "v",
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_jvm_memory{type='allocated', server_name=~\"$proxies\"} - scalar(bungee_jvm_memory{type='free', server_name=~\"$proxies\"})",
+          "expr": "bungee_jvm_memory{type='allocated', proxy_name=~\"$proxy\"} - scalar(bungee_jvm_memory{type='free', proxy_name=~\"$proxy\"})",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
@@ -853,7 +859,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "$proxies RAM",
+      "title": "$proxy RAM",
       "type": "gauge"
     }
   ],
@@ -867,42 +873,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
-        },
-        "datasource": null,
-        "definition": "bungee_jvm_memory",
-        "description": "",
-        "error": null,
-        "hide": 0,
-        "includeAll": true,
-        "label": null,
-        "multi": true,
-        "name": "proxies",
-        "options": [],
-        "query": {
-          "query": "bungee_jvm_memory",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": ".*server_name=\"(.*?)\".*",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
-          "selected": true,
-          "text": "proxy",
-          "value": "proxy"
+          "text": "proxy1",
+          "value": "proxy1"
         },
         "datasource": null,
         "definition": "bungee_online_servers",
@@ -912,7 +884,7 @@
         "includeAll": false,
         "label": null,
         "multi": false,
-        "name": "main",
+        "name": "proxy",
         "options": [],
         "query": {
           "query": "bungee_online_servers",
@@ -935,7 +907,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "RedisBungee",
-  "uid": "Vd2HgXZ7k",
-  "version": 13
+  "title": "Bungeecord",
+  "uid": "_IGCqp7nk",
+  "version": 2
 }
