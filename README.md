@@ -14,7 +14,8 @@ A **Bungee plugin** which exports network stats for Prometheus.
 - automates the collection, management and viewing of your data
 - get alerts for service outages
 
-## Requirement 
+## Requirement
+
 - Java 11+
 - Bungeecord / Waterfall
 
@@ -41,34 +42,36 @@ Add the following job to the ``scrape_configs`` section of your Prometheus confi
     scrape_interval: 5s
 
     static_configs:
-       - targets: ['localhost:9225']
-         labels:
-            proxy_name: 'proxy1'
+      - targets: [ 'localhost:9225' ]
+        labels:
+          proxy_name: 'proxy1'
 ```
 
 ### Multiple proxies
 
 You can use labels in your Prometheus scrape configuration to distinguish between multiple proxies:
+
 ```yml
   - job_name: 'bungeecord'
     scrape_interval: 5s
 
     static_configs:
-       - targets: ['localhost:9225']
-         labels:
-            proxy_name: 'proxy1'
-       - targets: ['localhost:9226']
-         labels:
-            proxy_name: 'proxy2'
+      - targets: [ 'localhost:9225' ]
+        labels:
+          proxy_name: 'proxy1'
+      - targets: [ 'localhost:9226' ]
+        labels:
+          proxy_name: 'proxy2'
 ```
 
 ## Import Grafana Dashboard
 
 1. Navigate to Grafana -> Dashboards -> Import
-1. Paste in or
-   upload [default dashboard](https://github.com/weihao/bungeecord-prometheus-exporter/tree/main/dashboards)
+1. Paste in or upload [default dashboard](https://github.com/weihao/bungeecord-prometheus-exporter/tree/main/dashboards)
 1. ![default dashboard](https://raw.githubusercontent.com/weihao/bungeecord-prometheus-exporter/main/images/dashboard.png)
 
 ## Notes
 
-RedisBungee is supported but disabled by default. RedisBungee metrics are not used in the dashboard because we are already collecting metrics from single instances. However if you still want to integerate with RedisBungee, free feel to enable it and modify the dashboard.
+RedisBungee is supported but disabled by default. RedisBungee metrics are not used in the dashboard because we are
+already collecting metrics from single instances. However if you still want to integerate with RedisBungee, free feel to
+enable it and modify the dashboard.

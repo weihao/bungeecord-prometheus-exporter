@@ -1,13 +1,8 @@
 package org.akadia.prometheus.metrics;
 
-import com.google.common.collect.Multimap;
 import com.imaginarycode.minecraft.redisbungee.RedisBungee;
 import net.md_5.bungee.api.plugin.Plugin;
 import org.akadia.prometheus.interfaces.GauageMetric;
-
-import java.util.Collection;
-import java.util.Map;
-import java.util.UUID;
 
 public class RedisBungeeOnlinePlayers extends GauageMetric {
 

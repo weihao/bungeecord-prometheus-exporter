@@ -58,6 +58,6 @@
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-bungeecord:2.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-base:2.2.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework:RedisBungee:0.6.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework:RedisBungee:0.6.5" level="project" />
   </component>
 </module>

@@ -22,7 +22,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 4,
-  "iteration": 1629242426257,
+  "iteration": 1629243269005,
   "links": [],
   "panels": [
     {
@@ -357,14 +357,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(bungee_pings_total{proxy_name=~\"$proxy\"}[1h])",
+          "expr": "sum(increase(bungee_pings_total{proxy_name=~\"$proxy\"}[1h]))",
           "interval": "",
           "legendFormat": "list pings",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_pre_logins_total{proxy_name=~\"$proxy\"}[1h])",
+          "expr": "sum(increase(bungee_pre_logins_total{proxy_name=~\"$proxy\"}[1h]))",
           "hide": false,
           "interval": "",
           "legendFormat": "pre logins",
@@ -372,7 +372,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_post_logins_total{proxy_name=~\"$proxy\"}[1h])",
+          "expr": "sum(increase(bungee_post_logins_total{proxy_name=~\"$proxy\"}[1h]))",
           "hide": false,
           "interval": "",
           "legendFormat": "post logins",
@@ -380,7 +380,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_connects_total{proxy_name=~\"$proxy\"}[1h])",
+          "expr": "sum(increase(bungee_player_connects_total{proxy_name=~\"$proxy\"}[1h]))",
           "hide": false,
           "interval": "",
           "legendFormat": "connects",
@@ -388,7 +388,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_disconnects_total{proxy_name=~\"$proxy\"}[1h])",
+          "expr": "sum(increase(bungee_player_disconnects_total{proxy_name=~\"$proxy\"}[1h]))",
           "hide": false,
           "interval": "",
           "legendFormat": "disconnects",
@@ -445,14 +445,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(bungee_pings_total{proxy_name=~\"$proxy\"}[1d])",
+          "expr": "sum(increase(bungee_pings_total{proxy_name=~\"$proxy\"}[1d]))",
           "interval": "",
           "legendFormat": "list pings",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_pre_logins_total{proxy_name=~\"$proxy\"}[1d])",
+          "expr": "sum(increase(bungee_pre_logins_total{proxy_name=~\"$proxy\"}[1d]))",
           "hide": false,
           "interval": "",
           "legendFormat": "pre logins",
@@ -460,7 +460,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_post_logins_total{proxy_name=~\"$proxy\"}[1d])",
+          "expr": "sum(increase(bungee_post_logins_total{proxy_name=~\"$proxy\"}[1d]))",
           "hide": false,
           "interval": "",
           "legendFormat": "post logins",
@@ -468,7 +468,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_connects_total{proxy_name=~\"$proxy\"}[1d])",
+          "expr": "sum(increase(bungee_player_connects_total{proxy_name=~\"$proxy\"}[1d]))",
           "hide": false,
           "interval": "",
           "legendFormat": "connects",
@@ -476,7 +476,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(bungee_player_disconnects_total{proxy_name=~\"$proxy\"}[1d])",
+          "expr": "sum(increase(bungee_player_disconnects_total{proxy_name=~\"$proxy\"}[1d]))",
           "hide": false,
           "interval": "",
           "legendFormat": "disconnects",
@@ -529,14 +529,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_jvm_threads_current{proxy_name=~\"$proxy\"}",
+          "expr": "sum(bungee_jvm_threads_current{proxy_name=~\"$proxy\"})",
           "interval": "",
           "legendFormat": "{{server_name}} TOTAL",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "bungee_jvm_threads_state{proxy_name=~\"$proxy\"}",
+          "expr": "sum by (state) (bungee_jvm_threads_state{proxy_name=~\"$proxy\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "{{server_name}} {{state}}",
@@ -661,7 +661,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_jvm_memory{type='used',proxy_name=~\"$proxy\"}",
+          "expr": "sum by (type) (bungee_jvm_memory{type='used',proxy_name=~\"$proxy\"})",
           "hide": true,
           "interval": "",
           "legendFormat": "{{server_name}} used",
@@ -669,7 +669,7 @@
         },
         {
           "exemplar": true,
-          "expr": "bungee_jvm_memory{type='free',proxy_name=~\"$proxy\"}",
+          "expr": "sum by (type) (bungee_jvm_memory{type='free',proxy_name=~\"$proxy\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "{{server_name}} free",
@@ -786,7 +786,7 @@
           "exemplar": true,
           "expr": "bungee_online_servers{proxy_name=~\"$proxy\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{proxy_name}}",
           "refId": "A"
         }
       ],
@@ -849,7 +849,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "bungee_jvm_memory{type='allocated', proxy_name=~\"$proxy\"} - scalar(bungee_jvm_memory{type='free', proxy_name=~\"$proxy\"})",
+          "expr": "sum(bungee_jvm_memory{type='allocated', proxy_name=~\"$proxy\"}) - scalar(sum(bungee_jvm_memory{type='free', proxy_name=~\"$proxy\"}))",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
@@ -881,7 +881,7 @@
         "description": null,
         "error": null,
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "label": null,
         "multi": false,
         "name": "proxy",
@@ -891,7 +891,7 @@
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": ".*server_name=\"(.*?)\".*",
+        "regex": ".*proxy_name=\"(.*?)\".*",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
@@ -909,5 +909,5 @@
   "timezone": "",
   "title": "Bungeecord",
   "uid": "_IGCqp7nk",
-  "version": 2
+  "version": 4
 }

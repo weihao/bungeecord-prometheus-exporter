@@ -6,7 +6,7 @@ import org.akadia.prometheus.interfaces.GauageMetric;
 
 import java.util.Map;
 
-public class  OnlinePlayers extends GauageMetric {
+public class OnlinePlayers extends GauageMetric {
 
     public OnlinePlayers(Plugin plugin) {
         super(plugin);
