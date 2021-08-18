@@ -21,8 +21,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 4,
-  "iteration": 1629243269005,
+  "iteration": 1629247665974,
   "links": [],
   "panels": [
     {
@@ -877,7 +876,7 @@
           "value": "proxy1"
         },
         "datasource": null,
-        "definition": "bungee_online_servers",
+        "definition": "label_values(bungee_online_servers, proxy_name)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -887,11 +886,11 @@
         "name": "proxy",
         "options": [],
         "query": {
-          "query": "bungee_online_servers",
+          "query": "label_values(bungee_online_servers, proxy_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": ".*proxy_name=\"(.*?)\".*",
+        "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
@@ -909,5 +908,5 @@
   "timezone": "",
   "title": "Bungeecord",
   "uid": "_IGCqp7nk",
-  "version": 4
+  "version": 1
 }
