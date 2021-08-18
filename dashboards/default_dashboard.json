@@ -21,7 +21,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1629247665974,
+  "id": 4,
+  "iteration": 1629252728262,
   "links": [],
   "panels": [
     {
@@ -701,8 +702,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 4,
+        "h": 2,
+        "w": 2,
         "x": 12,
         "y": 13
       },
@@ -732,7 +733,7 @@
           "refId": "A"
         }
       ],
-      "title": "Online Proxies",
+      "title": "Proxies",
       "type": "stat"
     },
     {
@@ -758,10 +759,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 2,
         "w": 2,
-        "x": 12,
-        "y": 16
+        "x": 14,
+        "y": 13
       },
       "id": 20,
       "options": {
@@ -823,10 +824,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
-        "w": 2,
-        "x": 14,
-        "y": 16
+        "h": 5,
+        "w": 4,
+        "x": 12,
+        "y": 15
       },
       "id": 9,
       "options": {
@@ -871,9 +872,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "proxy1",
-          "value": "proxy1"
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": null,
         "definition": "label_values(bungee_online_servers, proxy_name)",
@@ -906,7 +907,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Bungeecord",
-  "uid": "_IGCqp7nk",
-  "version": 1
+  "title": "Bungeecord2",
+  "uid": "AltFNh7nz",
+  "version": 2
 }
