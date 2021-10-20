@@ -94,7 +94,7 @@ public class PrometheusBungeecordExporter extends Plugin {
         try {
             Metrics metrics = new Metrics(this, 11269);
         } catch (IllegalStateException ex) {
-            getLogger().info("Metrics failed to start");
+            getLogger().info("bStats Metrics failed to start");
         }
         getLogger().info("Initialized completed");
     }
