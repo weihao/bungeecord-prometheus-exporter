@@ -21,8 +21,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 4,
-  "iteration": 1629252728262,
+  "id": 1,
+  "iteration": 1634878993418,
   "links": [],
   "panels": [
     {
@@ -288,9 +288,7 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -344,9 +342,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -432,9 +428,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -662,7 +656,7 @@
         {
           "exemplar": true,
           "expr": "sum by (type) (bungee_jvm_memory{type='used',proxy_name=~\"$proxy\"})",
-          "hide": true,
+          "hide": false,
           "interval": "",
           "legendFormat": "{{server_name}} used",
           "refId": "C"
@@ -714,9 +708,7 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -771,9 +763,7 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -833,9 +823,7 @@
       "options": {
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -907,7 +895,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Bungeecord2",
+  "title": "Bungeecord",
   "uid": "AltFNh7nz",
-  "version": 2
+  "version": 1
 }
