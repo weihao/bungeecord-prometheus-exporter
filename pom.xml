@@ -5,7 +5,7 @@
     <groupId>org.akadia</groupId>
     <artifactId>bungeecord-prometheus-exporter</artifactId>
     <name>BungeecordPrometheusExporter</name>
-    <version>2.0.5-SNAPSHOT</version>
+    <version>2.0.5</version>
     <packaging>jar</packaging>
     <url>https://akadia.org</url>
 
@@ -15,7 +15,7 @@
         <url>https://github.com/weihao/bungeecord-prometheus-exporter</url>
         <connection>scm:git:git://github.com/weihao/bungeecord-prometheus-exporter.git</connection>
         <developerConnection>scm:git:git@github.com:weihao/bungeecord-prometheus-exporter.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>2.0.5</tag>
     </scm>
 
     <distributionManagement>
