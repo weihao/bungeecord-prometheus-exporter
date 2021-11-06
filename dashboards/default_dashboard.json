@@ -18,12 +18,14 @@
       }
     ]
   },
+  "description": "",
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1634878993418,
+  "iteration": 1636219915107,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "aliasColors": {},
@@ -57,7 +59,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -159,7 +161,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -295,7 +297,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.2.1",
       "repeat": null,
       "targets": [
         {
@@ -349,7 +351,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": false,
@@ -435,7 +437,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": false,
@@ -512,7 +514,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -715,7 +717,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": false,
@@ -770,7 +772,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "exemplar": false,
@@ -831,7 +833,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.2.1",
       "repeat": "proxies",
       "repeatDirection": "v",
       "targets": [
@@ -852,9 +854,9 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 30,
+  "schemaVersion": 31,
   "style": "dark",
-  "tags": [],
+  "tags": ["bungeecord", "prometheus"],
   "templating": {
     "list": [
       {
@@ -897,5 +899,5 @@
   "timezone": "",
   "title": "Bungeecord",
   "uid": "AltFNh7nz",
-  "version": 1
+  "version": 2
 }
