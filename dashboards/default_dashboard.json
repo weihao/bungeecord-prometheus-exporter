@@ -23,7 +23,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1636219915107,
+  "iteration": 1636843419186,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -362,6 +362,14 @@
         },
         {
           "exemplar": false,
+          "expr": "sum(increase(bungee_player_connects_total{proxy_name=~\"$proxy\"}[1h]))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "connects",
+          "refId": "B"
+        },
+        {
+          "exemplar": false,
           "expr": "sum(increase(bungee_pre_logins_total{proxy_name=~\"$proxy\"}[1h]))",
           "hide": false,
           "interval": "",
@@ -375,14 +383,6 @@
           "interval": "",
           "legendFormat": "post logins",
           "refId": "C"
-        },
-        {
-          "exemplar": false,
-          "expr": "sum(increase(bungee_player_connects_total{proxy_name=~\"$proxy\"}[1h]))",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "connects",
-          "refId": "B"
         },
         {
           "exemplar": false,
@@ -448,6 +448,14 @@
         },
         {
           "exemplar": false,
+          "expr": "sum(increase(bungee_player_connects_total{proxy_name=~\"$proxy\"}[1d]))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "connects",
+          "refId": "B"
+        },
+        {
+          "exemplar": false,
           "expr": "sum(increase(bungee_pre_logins_total{proxy_name=~\"$proxy\"}[1d]))",
           "hide": false,
           "interval": "",
@@ -461,14 +469,6 @@
           "interval": "",
           "legendFormat": "post logins",
           "refId": "C"
-        },
-        {
-          "exemplar": false,
-          "expr": "sum(increase(bungee_player_connects_total{proxy_name=~\"$proxy\"}[1d]))",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "connects",
-          "refId": "B"
         },
         {
           "exemplar": false,
@@ -899,5 +899,5 @@
   "timezone": "",
   "title": "Bungeecord",
   "uid": "AltFNh7nz",
-  "version": 2
+  "version": 3
 }
