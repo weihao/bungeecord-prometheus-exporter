@@ -1,18 +1,17 @@
 package org.akadia.prometheus.interfaces;
 
 import io.prometheus.client.Counter;
-import net.md_5.bungee.api.plugin.Listener;
-import net.md_5.bungee.api.plugin.Plugin;
+import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.utils.Util;
 
-public abstract class CountableMetrics extends Metric implements Listener {
+public abstract class CountableMetrics extends Metric {
     private final Counter counter;
 
-    public CountableMetrics(Plugin plugin) {
+    public CountableMetrics(PrometheusExporter plugin) {
         super(plugin);
 
         this.counter = Counter.build()
-                .name(Util.prefix(this.getConfigKey()))
+                .name(Util.prefix(plugin.getPrefix(), this.getConfigKey()))
                 .labelNames(this.getLabels())
                 .help(this.getHelp())
                 .create()

@@ -20,9 +20,38 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.6" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.velocitypowered:velocity-api:1.1.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:25.1-jre" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.errorprone:error_prone_annotations:2.1.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.j2objc:j2objc-annotations:1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.14" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:text-api:3.0.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:text-serializer-gson:3.0.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:text-serializer-legacy:3.0.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:text-serializer-plain:3.0.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.moandjiezana.toml:toml4j:0.7.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-api:4.3.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:examination-api:1.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:examination-string:1.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-gson:4.3.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-legacy:4.3.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-plain:4.3.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-legacy-text3:4.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.inject:guice:4.2.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.checkerframework:checker-qual:3.6.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.velocitypowered:velocity-brigadier:1.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spongepowered:configurate-hocon:3.7.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spongepowered:configurate-core:3.7.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.typesafe:config:1.4.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spongepowered:configurate-yaml:3.7.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spongepowered:configurate-gson:3.7.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.md-5:bungeecord-api:1.16-R0.5-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.md-5:bungeecord-chat:1.16-R0.5-SNAPSHOT" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.gson:gson:2.8.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.md-5:bungeecord-config:1.16-R0.5-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.md-5:bungeecord-event:1.16-R0.5-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.md-5:bungeecord-protocol:1.16-R0.5-SNAPSHOT" level="project" />
@@ -36,13 +65,11 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: io.netty:netty-transport:4.1.63.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: io.netty:netty-resolver:4.1.63.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.yaml:snakeyaml:1.28" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:21.0" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:11.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:11.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-util:11.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-io:11.0.7" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.0-alpha5" level="project" />
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_common:0.12.0" level="project" />
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_hotspot:0.12.0" level="project" />
     <orderEntry type="library" name="Maven: com.jayway.jsonpath:json-path:2.6.0" level="project" />
@@ -58,6 +85,7 @@
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-bungeecord:2.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-base:2.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.bstats:bstats-velocity:2.2.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework:RedisBungee:0.6.5" level="project" />
   </component>
 </module>

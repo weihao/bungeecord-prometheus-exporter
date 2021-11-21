@@ -1,12 +1,12 @@
 package org.akadia.prometheus.metrics;
 
-import net.md_5.bungee.api.plugin.Plugin;
+import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.interfaces.GauageMetric;
 
 public class JvmMemory extends GauageMetric {
 
 
-    public JvmMemory(Plugin plugin) {
+    public JvmMemory(PrometheusExporter plugin) {
         super(plugin);
     }
 

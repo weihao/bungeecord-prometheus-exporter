@@ -2,6 +2,6 @@ name: ${project.name}
 version: ${project.version}
 author: akadia
 authors: [ akdaia, sldk ]
-main: org.akadia.prometheus.PrometheusBungeecordExporter
+main: org.akadia.prometheus.bungeecord.PrometheusBungeecordExporter
 website: akadia.org
 description: ${project.description}

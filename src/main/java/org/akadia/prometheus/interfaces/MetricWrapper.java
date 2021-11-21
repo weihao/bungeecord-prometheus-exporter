@@ -1,12 +1,12 @@
 package org.akadia.prometheus.interfaces;
 
 import io.prometheus.client.Collector;
-import net.md_5.bungee.api.plugin.Plugin;
+import org.akadia.prometheus.PrometheusExporter;
 
 public abstract class MetricWrapper extends Metric {
     private final Collector collector;
 
-    public MetricWrapper(Plugin plugin, Collector collector) {
+    public MetricWrapper(PrometheusExporter plugin, Collector collector) {
         super(plugin);
         this.collector = collector;
     }

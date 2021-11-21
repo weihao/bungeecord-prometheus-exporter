@@ -1,12 +1,12 @@
-package org.akadia.prometheus.metrics;
+package org.akadia.prometheus.bungeecord.metrics;
 
 import com.imaginarycode.minecraft.redisbungee.RedisBungee;
-import net.md_5.bungee.api.plugin.Plugin;
+import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.interfaces.GauageMetric;
 
 public class RedisBungeeOnlinePlayers extends GauageMetric {
 
-    public RedisBungeeOnlinePlayers(Plugin plugin) {
+    public RedisBungeeOnlinePlayers(PrometheusExporter plugin) {
         super(plugin);
     }
 
@@ -25,7 +25,7 @@ public class RedisBungeeOnlinePlayers extends GauageMetric {
 
     @Override
     public String getHelp() {
-        return "online redisbungee players";
+        return "the number of online redisbungee players";
     }
 
     @Override

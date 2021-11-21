@@ -1,20 +1,19 @@
 package org.akadia.prometheus.interfaces;
 
-import net.md_5.bungee.api.plugin.Plugin;
+import org.akadia.prometheus.PrometheusExporter;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.logging.Logger;
 
 public abstract class Metric implements Configurable {
 
-    private final Plugin plugin;
+    private final PrometheusExporter plugin;
 
-    public Metric(Plugin plugin) {
+    public Metric(PrometheusExporter plugin) {
         this.plugin = plugin;
     }
 
-    public Plugin getPlugin() {
+    public PrometheusExporter getPlugin() {
         return plugin;
     }
 
@@ -29,17 +28,16 @@ public abstract class Metric implements Configurable {
     public abstract void doCollect();
 
     private void logException(Exception e) {
-        final Logger log = this.getPlugin().getLogger();
         final String className = this.getClass().getSimpleName();
 
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         e.printStackTrace(pw);
 
-        log.warning(String.format("Failed to collect metric '%s': %s",
-                className, sw.toString()));
+        plugin.warn(String.format("Failed to collect metric '%s': %s",
+                className, sw));
 
-        log.throwing(className, "collect", e);
+        plugin.warn(className + " collect:" + e);
     }
 
     public abstract String getConfigKey();

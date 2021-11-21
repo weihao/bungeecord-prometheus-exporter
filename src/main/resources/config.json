@@ -1,0 +1,17 @@
+{
+  "host": "127.0.0.1",
+  "port": "9225",
+  "prefix": "bungeecord_",
+  "jvm_gc": "true",
+  "jvm_memory": "true",
+  "jvm_threads": "true",
+  "player_connects": "true",
+  "player_disconnects": "true",
+  "server_list_pings": "true",
+  "managed_servers": "true",
+  "online_players": "true",
+  "redis_player_connects": "false",
+  "redis_player_disconnects": "false",
+  "redis_online_players": "false",
+  "redis_bungee_online_proxies": "false"
+}

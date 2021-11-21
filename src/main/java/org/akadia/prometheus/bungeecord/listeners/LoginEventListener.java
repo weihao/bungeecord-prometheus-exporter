@@ -1,13 +1,14 @@
-package org.akadia.prometheus.listeners;
+package org.akadia.prometheus.bungeecord.listeners;
 
 import net.md_5.bungee.api.event.LoginEvent;
-import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
+import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.interfaces.CountableMetrics;
 
-public class LoginEventListener extends CountableMetrics {
+public class LoginEventListener extends CountableMetrics implements Listener {
 
-    public LoginEventListener(Plugin plugin) {
+    public LoginEventListener(PrometheusExporter plugin) {
         super(plugin);
     }
 
@@ -18,12 +19,12 @@ public class LoginEventListener extends CountableMetrics {
 
     @Override
     public String getHelp() {
-        return "logins";
+        return "the number of player logins in Bungeecord";
     }
 
     @Override
     public String getConfigKey() {
-        return "logins";
+        return "player_connects";
     }
 
 }

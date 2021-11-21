@@ -12,17 +12,16 @@ import org.eclipse.jetty.server.handler.gzip.GzipHandler;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.util.logging.Level;
 
 public class MetricsServer {
 
     private final String host;
     private final int port;
-    private final PrometheusBungeecordExporter prometheusExporter;
+    private final PrometheusExporter prometheusExporter;
 
     private Server server;
 
-    public MetricsServer(String host, int port, PrometheusBungeecordExporter prometheusExporter) {
+    public MetricsServer(String host, int port, PrometheusExporter prometheusExporter) {
         this.host = host;
         this.port = port;
         this.prometheusExporter = prometheusExporter;
@@ -47,8 +46,7 @@ public class MetricsServer {
 
                     request.setHandled(true);
                 } catch (IOException e) {
-                    prometheusExporter.getLogger().log(Level.WARNING, "Failed to read server statistic: " + e.getMessage());
-                    prometheusExporter.getLogger().log(Level.FINE, "Failed to read server statistic: ", e);
+                    prometheusExporter.warn("Failed to read server statistic: " + e.getMessage());
                     response.sendError(HttpStatus.INTERNAL_SERVER_ERROR_500);
                 }
 

@@ -1,13 +1,14 @@
-package org.akadia.prometheus.listeners;
+package org.akadia.prometheus.bungeecord.listeners;
 
 import net.md_5.bungee.api.event.ProxyPingEvent;
-import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
+import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.interfaces.CountableMetrics;
 
-public class ProxyPingEventListener extends CountableMetrics {
+public class ProxyPingEventListener extends CountableMetrics implements Listener {
 
-    public ProxyPingEventListener(Plugin plugin) {
+    public ProxyPingEventListener(PrometheusExporter plugin) {
         super(plugin);
     }
 
@@ -18,11 +19,11 @@ public class ProxyPingEventListener extends CountableMetrics {
 
     @Override
     public String getHelp() {
-        return "total pings";
+        return "the number of server list pings in Bungeecord";
     }
 
     @Override
     public String getConfigKey() {
-        return "pings";
+        return "server_list_pings";
     }
 }
