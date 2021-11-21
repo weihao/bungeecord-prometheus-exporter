@@ -29,7 +29,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrometheusBungeecordExporter extends Plugin implements PrometheusExporter {
+public class PrometheusBungeeCordExporter extends Plugin implements PrometheusExporter {
     String prefix;
 
     @Override

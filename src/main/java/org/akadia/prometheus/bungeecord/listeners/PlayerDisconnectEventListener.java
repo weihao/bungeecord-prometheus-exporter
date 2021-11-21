@@ -19,7 +19,7 @@ public class PlayerDisconnectEventListener extends CountableMetrics implements L
 
     @Override
     public String getHelp() {
-        return "the number of player disconnects in Bungeecord";
+        return "the number of player disconnects in BungeeCord";
     }
 
     @Override

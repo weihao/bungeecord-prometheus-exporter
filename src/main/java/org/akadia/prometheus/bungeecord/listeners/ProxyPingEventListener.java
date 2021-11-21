@@ -19,7 +19,7 @@ public class ProxyPingEventListener extends CountableMetrics implements Listener
 
     @Override
     public String getHelp() {
-        return "the number of server list pings in Bungeecord";
+        return "the number of server list pings in BungeeCord";
     }
 
     @Override

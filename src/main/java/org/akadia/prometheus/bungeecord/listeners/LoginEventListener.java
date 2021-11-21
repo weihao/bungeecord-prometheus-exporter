@@ -19,7 +19,7 @@ public class LoginEventListener extends CountableMetrics implements Listener {
 
     @Override
     public String getHelp() {
-        return "the number of player logins in Bungeecord";
+        return "the number of player logins in BungeeCord";
     }
 
     @Override

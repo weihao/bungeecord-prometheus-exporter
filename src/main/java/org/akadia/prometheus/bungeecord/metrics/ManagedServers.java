@@ -1,17 +1,17 @@
 package org.akadia.prometheus.bungeecord.metrics;
 
-import org.akadia.prometheus.bungeecord.PrometheusBungeecordExporter;
+import org.akadia.prometheus.bungeecord.PrometheusBungeeCordExporter;
 import org.akadia.prometheus.interfaces.GauageMetric;
 
 public class ManagedServers extends GauageMetric {
 
-    public ManagedServers(PrometheusBungeecordExporter plugin) {
+    public ManagedServers(PrometheusBungeeCordExporter plugin) {
         super(plugin);
     }
 
     @Override
     public void doCollect() {
-        this.getGauge().set(((PrometheusBungeecordExporter) getPlugin()).getProxy().getServers().size());
+        this.getGauge().set(((PrometheusBungeeCordExporter) getPlugin()).getProxy().getServers().size());
     }
 
     @Override
@@ -21,6 +21,6 @@ public class ManagedServers extends GauageMetric {
 
     @Override
     public String getHelp() {
-        return "the number of managed servers in Bungeecord";
+        return "the number of managed servers in BungeeCord";
     }
 }

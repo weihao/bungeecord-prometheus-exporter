@@ -10,7 +10,7 @@
         <file>
             <source>${project.build.directory}/${artifactId}-${version}.jar</source>
             <outputDirectory>/</outputDirectory>
-            <destName>BungeecordPrometheusExporter.jar</destName>
+            <destName>BungeeCordPrometheusExporter.jar</destName>
         </file>
     </files>
 </assembly>
