@@ -23,8 +23,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 5,
-  "iteration": 1637473604425,
+  "iteration": 1638583173492,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -695,7 +694,7 @@
           "value": "$__all"
         },
         "datasource": null,
-        "definition": "label_values(bungeecord_managed_servers, proxy_name)",
+        "definition": "label_values(bungeecord_online_players, proxy_name)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -705,7 +704,7 @@
         "name": "proxy",
         "options": [],
         "query": {
-          "query": "label_values(bungeecord_managed_servers, proxy_name)",
+          "query": "label_values(bungeecord_online_players, proxy_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -727,5 +726,5 @@
   "timezone": "",
   "title": "BungeeCord",
   "uid": "AltFNh7nz",
-  "version": 3
+  "version": 2
 }
