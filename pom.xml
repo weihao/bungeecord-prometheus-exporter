@@ -110,7 +110,7 @@
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient_httpserver</artifactId>
-            <version>0.13.0</version>
+            <version>0.14.1</version>
         </dependency>
         <!-- Pushgateway exposition-->
         <dependency>
