@@ -27,7 +27,7 @@ public class OnlinePlayers extends GauageMetric {
 
     @Override
     public String getHelp() {
-        return "the number of online players in BungeeCord";
+        return "the number of online players in Velocity";
     }
 
     @Override

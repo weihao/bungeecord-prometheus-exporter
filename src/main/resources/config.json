@@ -10,6 +10,7 @@
   "server_list_pings": "true",
   "managed_servers": "true",
   "online_players": "true",
+  "online_player_latency": "true",
   "redis_player_connects": "false",
   "redis_player_disconnects": "false",
   "redis_online_players": "false",
