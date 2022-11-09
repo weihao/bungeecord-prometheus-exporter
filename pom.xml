@@ -139,7 +139,7 @@
         <dependency>
             <groupId>com.github.Limework</groupId>
             <artifactId>RedisBungee</artifactId>
-            <version>0.7.3</version>
+            <version>0.8.1</version>
             <scope>provided</scope>
         </dependency>
         <!--        testing        -->
