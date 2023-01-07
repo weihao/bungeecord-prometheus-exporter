@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.akadia</groupId>
     <artifactId>bungeecord-prometheus-exporter</artifactId>
     <name>BungeeCordPrometheusExporter</name>
-    <version>3.1.2-SNAPSHOT</version>
+    <version>3.1.2</version>
     <packaging>jar</packaging>
     <url>https://akadia.org</url>
 
@@ -16,7 +15,7 @@
         <url>https://github.com/weihao/bungeecord-prometheus-exporter</url>
         <connection>scm:git:git://github.com/weihao/bungeecord-prometheus-exporter.git</connection>
         <developerConnection>scm:git:git@github.com:weihao/bungeecord-prometheus-exporter.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>3.1.2</tag>
     </scm>
 
     <distributionManagement>
@@ -214,8 +213,7 @@
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
                                         <Implementation-Title>${project.artifactId}</Implementation-Title>
                                         <Implementation-Version>${project.version}</Implementation-Version>
