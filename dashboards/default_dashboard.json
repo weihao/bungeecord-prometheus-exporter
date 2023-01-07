@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -21,20 +24,23 @@
   "description": "",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1654831132926,
   "links": [],
   "liveNow": false,
   "panels": [
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -82,7 +88,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 17,
+        "h": 12,
         "w": 12,
         "x": 0,
         "y": 0
@@ -97,15 +103,21 @@
             "last"
           ],
           "displayMode": "table",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.2.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "sum by (server) (bungeecord_online_players{proxy_name=~\"$proxy\"})",
           "hide": false,
@@ -114,6 +126,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "sum(bungeecord_online_players{proxy_name=~\"$proxy\"})",
           "hide": true,
@@ -122,19 +138,22 @@
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Online Players",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -185,8 +204,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 17,
-        "w": 12,
+        "h": 12,
+        "w": 11,
         "x": 12,
         "y": 0
       },
@@ -200,15 +219,21 @@
             "sum"
           ],
           "displayMode": "table",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.2.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "sum(increase(bungeecord_server_list_pings_total{proxy_name=~\"$proxy\"}[1m]))",
           "hide": false,
@@ -217,6 +242,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "sum(increase(bungeecord_player_connects_total{proxy_name=~\"$proxy\"}[1m]))",
           "hide": false,
@@ -225,6 +254,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "sum(increase(bungeecord_player_disconnects_total{proxy_name=~\"$proxy\"}[1m]))",
           "hide": false,
@@ -233,19 +266,22 @@
           "refId": "F"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Events",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -293,10 +329,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 17,
-        "w": 12,
+        "h": 10,
+        "w": 6,
         "x": 0,
-        "y": 17
+        "y": 12
       },
       "id": 5,
       "links": [],
@@ -309,16 +345,21 @@
             "last"
           ],
           "displayMode": "table",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.0.6",
-      "repeat": null,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "sum by (type) (bungeecord_jvm_memory{type='used',proxy_name=~\"$proxy\"})",
           "hide": false,
@@ -327,6 +368,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "sum by (type) (bungeecord_jvm_memory{type='free',proxy_name=~\"$proxy\"})",
           "hide": false,
@@ -335,8 +380,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "JVM Memory",
       "type": "timeseries"
     },
@@ -345,14 +388,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fill": 1,
       "fillGradient": 1,
       "gridPos": {
-        "h": 9,
-        "w": 5,
-        "x": 12,
-        "y": 17
+        "h": 10,
+        "w": 6,
+        "x": 6,
+        "y": 12
       },
       "hiddenSeries": false,
       "id": 11,
@@ -372,7 +418,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.3.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -382,6 +428,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "sum(bungeecord_jvm_threads_current{proxy_name=~\"$proxy\"})",
           "interval": "",
@@ -389,6 +439,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "sum by (state) (bungeecord_jvm_threads_state{proxy_name=~\"$proxy\"})",
           "hide": false,
@@ -398,9 +452,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Threads",
       "tooltip": {
         "shared": true,
@@ -409,37 +461,31 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -461,10 +507,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 4,
         "w": 3,
-        "x": 17,
-        "y": 17
+        "x": 12,
+        "y": 12
       },
       "id": 13,
       "options": {
@@ -482,10 +528,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.1",
-      "repeat": null,
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "sum(bungeecord_online_players{proxy_name=~\"$proxy\"})",
           "interval": "",
@@ -497,7 +546,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -527,10 +579,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 4,
         "w": 2,
-        "x": 20,
-        "y": 17
+        "x": 15,
+        "y": 12
       },
       "id": 9,
       "options": {
@@ -546,11 +598,15 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.3.2",
       "repeat": "proxies",
       "repeatDirection": "v",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "sum(bungeecord_jvm_memory{type='allocated', proxy_name=~\"$proxy\"}) - scalar(sum(bungeecord_jvm_memory{type='free', proxy_name=~\"$proxy\"}))",
           "instant": false,
@@ -560,13 +616,14 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "$proxy RAM",
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -588,8 +645,8 @@
       "gridPos": {
         "h": 4,
         "w": 2,
-        "x": 22,
-        "y": 17
+        "x": 17,
+        "y": 12
       },
       "id": 18,
       "options": {
@@ -607,9 +664,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "count(count(bungeecord_jvm_memory{proxy_name=~\".*\"}) by (proxy_name))",
           "interval": "",
@@ -621,7 +682,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -643,10 +707,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 2,
-        "x": 22,
-        "y": 21
+        "x": 19,
+        "y": 12
       },
       "id": 20,
       "options": {
@@ -664,9 +728,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "bungeecord_managed_servers{proxy_name=~\"$proxy\"}",
           "interval": "",
@@ -678,7 +746,76 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 21,
+        "y": 12
+      },
+      "id": 23,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "bungeecord_installed_network_plugins{proxy_name=~\"$proxy\"}",
+          "interval": "",
+          "legendFormat": "{{proxy_name}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Plugins",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -711,10 +848,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 6,
+        "w": 11,
         "x": 12,
-        "y": 26
+        "y": 16
       },
       "id": 22,
       "options": {
@@ -723,13 +860,18 @@
         "combine": false,
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         }
       },
       "pluginVersion": "8.2.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": false,
           "expr": "clamp_max(avg(bungeecord_online_player_latency > 0),1000)",
           "interval": "",
@@ -742,7 +884,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 31,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [
     "bungeecord"
@@ -750,19 +892,18 @@
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": null,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "definition": "label_values(bungeecord_managed_servers, proxy_name)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": null,
         "multi": false,
         "name": "proxy",
         "options": [],
@@ -789,5 +930,6 @@
   "timezone": "",
   "title": "Minecraft Network",
   "uid": "AltFNh7nz",
-  "version": 10
+  "version": 12,
+  "weekStart": ""
 }
