@@ -5,7 +5,8 @@
 
 A **plugin** that exports network stats for Prometheus.
 
-> If you don't run a network proxy, you might also be interested in [Prometheus Exporter](https://github.com/sladkoff/minecraft-prometheus-exporter) for a `single server` metrics!
+> If you don't run a network proxy, you might also be interested
+> in [Prometheus Exporter](https://github.com/sladkoff/minecraft-prometheus-exporter) for a `single server` metrics!
 
 ## Why BungeeCord Prometheus Exporter?
 
@@ -19,6 +20,7 @@ A **plugin** that exports network stats for Prometheus.
 - Java 11+
 
 ## Compatible Proxy
+
 - [x] Velocity
 - [x] BungeeCord / Waterfall
 - [x] RedisBungee

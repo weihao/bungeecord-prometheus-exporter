@@ -1,9 +1,6 @@
 package org.akadia.prometheus.velocity.metrics;
 
 import com.velocitypowered.api.proxy.Player;
-import com.velocitypowered.api.proxy.server.RegisteredServer;
-import net.md_5.bungee.api.connection.ProxiedPlayer;
-import org.akadia.prometheus.bungeecord.PrometheusBungeeCordExporter;
 import org.akadia.prometheus.interfaces.SummaryMetric;
 import org.akadia.prometheus.velocity.PrometheusVelocityExporter;
 

@@ -20,7 +20,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.9.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.9.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.velocitypowered:velocity-api:3.1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:25.1-jre" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
@@ -62,34 +62,62 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: io.netty:netty-transport:4.1.63.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: io.netty:netty-resolver:4.1.63.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.yaml:snakeyaml:1.28" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:11.0.9" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:11.0.13" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:11.0.9" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-util:11.0.9" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-io:11.0.9" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_common:0.15.0" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_hotspot:0.15.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:11.0.13" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-util:11.0.13" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-io:11.0.13" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_common:0.16.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_hotspot:0.16.0" level="project" />
     <orderEntry type="library" name="Maven: com.jayway.jsonpath:json-path:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: net.minidev:json-smart:2.4.7" level="project" />
     <orderEntry type="library" name="Maven: net.minidev:accessors-smart:2.4.7" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm:9.1" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient:0.15.0" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel:0.15.0" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_common:0.15.0" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel_agent:0.15.0" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_httpserver:0.15.0" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_pushgateway:0.15.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient:0.16.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel:0.16.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_common:0.16.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel_agent:0.16.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_httpserver:0.16.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_pushgateway:0.16.0" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-bungeecord:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-base:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-velocity:3.0.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework:RedisBungee:0.7.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-API:0.7.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: redis.clients:jedis:4.2.3" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20211205" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework:RedisBungee:0.10.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-API:0.10.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: redis.clients:jedis:4.3.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20220320" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-pool2:2.11.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup.okhttp:okhttp:2.7.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup.okio:okio:1.6.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-Bungee:0.7.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-BungeeEvents:0.7.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-Bungee:0.10.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-Velocity:0.10.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter:5.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-params:5.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:4.11.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy:1.12.19" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy-agent:1.12.19" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:3.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-junit-jupiter:4.11.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.rest-assured:rest-assured:5.1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.groovy:groovy:4.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.groovy:groovy-xml:4.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpcore:4.4.13" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: commons-logging:commons-logging:1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: commons-codec:commons-codec:1.11" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpmime:4.5.13" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest:2.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.ccil.cowan.tagsoup:tagsoup:1.2.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.rest-assured:json-path:5.1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.groovy:groovy-json:4.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.rest-assured:rest-assured-common:5.1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.rest-assured:xml-path:5.1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.commons:commons-lang3:3.11" level="project" />
   </component>
 </module>

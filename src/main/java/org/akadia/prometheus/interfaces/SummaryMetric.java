@@ -1,6 +1,5 @@
 package org.akadia.prometheus.interfaces;
 
-import io.prometheus.client.Gauge;
 import io.prometheus.client.Summary;
 import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.utils.Util;

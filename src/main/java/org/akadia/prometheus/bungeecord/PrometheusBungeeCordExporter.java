@@ -11,6 +11,7 @@ import org.akadia.prometheus.bungeecord.listeners.PlayerDisconnectEventListener;
 import org.akadia.prometheus.bungeecord.listeners.PlayerJoinedNetworkEventListener;
 import org.akadia.prometheus.bungeecord.listeners.PlayerLeftNetworkEventListener;
 import org.akadia.prometheus.bungeecord.listeners.ProxyPingEventListener;
+import org.akadia.prometheus.bungeecord.metrics.InstalledNetworkPlugins;
 import org.akadia.prometheus.bungeecord.metrics.ManagedServers;
 import org.akadia.prometheus.bungeecord.metrics.OnlinePlayers;
 import org.akadia.prometheus.bungeecord.metrics.OnlinePlayersLatency;
@@ -67,6 +68,7 @@ public class PrometheusBungeeCordExporter extends Plugin implements PrometheusEx
         configurables.add(new OnlinePlayers(this));
         configurables.add(new OnlinePlayersLatency(this));
         configurables.add(new ManagedServers(this));
+        configurables.add(new InstalledNetworkPlugins(this));
 
         configurables.add(new PlayerJoinedNetworkEventListener(this));
         configurables.add(new PlayerLeftNetworkEventListener(this));

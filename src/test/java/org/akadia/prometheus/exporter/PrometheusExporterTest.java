@@ -1,11 +1,10 @@
-package org.akadia.prometheus.exporter.velocity;
+package org.akadia.prometheus.exporter;
 
 
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.Counter;
 import io.prometheus.client.exporter.common.TextFormat;
 import io.restassured.RestAssured;
-import net.md_5.bungee.api.connection.Server;
 import org.akadia.prometheus.MetricsServer;
 import org.akadia.prometheus.PrometheusExporter;
 import org.eclipse.jetty.http.HttpStatus;
@@ -19,12 +18,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.Arrays;
-import java.util.concurrent.CompletableFuture;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class PrometheusExporterTest {
