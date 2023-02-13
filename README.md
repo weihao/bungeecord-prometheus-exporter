@@ -29,7 +29,7 @@ A **plugin** that exports network stats for Prometheus.
 
 Drop the bungeecord-prometheus-exporter.jar into your plugins directory and start your proxy server.
 
-After startup, the Prometheus metrics endpoint should be available at ``localhost:9225/metrics`` (assuming localhost is
+After startup, the Prometheus metrics endpoint should be available at ``localhost:9985/metrics`` (assuming localhost is
 the server hostname).
 
 If running inside the docker, change the host to `0.0.0.0` to allow Prometheus and other services to reach the endpoint.
@@ -47,7 +47,7 @@ Add the following job to the ``scrape_configs`` section of your Prometheus confi
     scrape_interval: 5s
 
     static_configs:
-      - targets: [ 'localhost:9225' ]
+      - targets: [ 'localhost:9985' ]
         labels:
           proxy_name: 'proxy'
 ```
@@ -61,7 +61,7 @@ You can use labels in your Prometheus scrape configuration to distinguish betwee
     scrape_interval: 5s
 
     static_configs:
-      - targets: [ 'localhost:9225' ]
+      - targets: [ 'localhost:9985' ]
         labels:
           proxy_name: 'proxy1'
       - targets: [ 'localhost:9226' ]

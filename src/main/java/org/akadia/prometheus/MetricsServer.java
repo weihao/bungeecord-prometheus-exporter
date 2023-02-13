@@ -1,5 +1,6 @@
 package org.akadia.prometheus;
 
+import io.prometheus.client.Collector;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.exporter.common.TextFormat;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.eclipse.jetty.server.handler.gzip.GzipHandler;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.Enumeration;
 
 public class MetricsServer {
 
@@ -41,6 +43,7 @@ public class MetricsServer {
                     MetricRegistry.getInstance().collectMetrics();
                     response.setStatus(HttpStatus.OK_200);
                     response.setContentType(TextFormat.CONTENT_TYPE_004);
+                    Enumeration<Collector.MetricFamilySamples> metricFamilySamplesEnumeration = CollectorRegistry.defaultRegistry.metricFamilySamples();
 
                     TextFormat.write004(response.getWriter(), CollectorRegistry.defaultRegistry.metricFamilySamples());
 

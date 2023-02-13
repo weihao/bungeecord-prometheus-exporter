@@ -72,7 +72,7 @@ public class PrometheusVelocityExporter implements PrometheusExporter {
         this.prefix = configManager.getConfig().getOrDefault("prefix", "bungeecord_");
 
         String host = configManager.getConfig().getOrDefault("host", "127.0.0.1");
-        int port = Integer.parseInt(configManager.getConfig().getOrDefault("port", "9225"));
+        int port = Integer.parseInt(configManager.getConfig().getOrDefault("port", "9985"));
 
         MetricsServer server = new MetricsServer(host, port, this);
 
