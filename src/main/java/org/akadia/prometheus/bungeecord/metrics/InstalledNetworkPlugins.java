@@ -11,7 +11,13 @@ public class InstalledNetworkPlugins extends GauageMetric {
 
     @Override
     public void doCollect() {
-        this.getGauge().set(((PrometheusBungeeCordExporter) getPlugin()).getProxy().getPluginManager().getPlugins().size());
+        this.getGauge()
+                .set(
+                        ((PrometheusBungeeCordExporter) getPlugin())
+                                .getProxy()
+                                .getPluginManager()
+                                .getPlugins().size()
+                );
     }
 
     @Override

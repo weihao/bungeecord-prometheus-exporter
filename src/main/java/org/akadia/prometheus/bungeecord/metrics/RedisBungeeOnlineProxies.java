@@ -1,6 +1,6 @@
 package org.akadia.prometheus.bungeecord.metrics;
 
-import com.imaginarycode.minecraft.redisbungee.RedisBungee;
+import com.imaginarycode.minecraft.redisbungee.RedisBungeeAPI;
 import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.interfaces.GauageMetric;
 
@@ -12,7 +12,7 @@ public class RedisBungeeOnlineProxies extends GauageMetric {
 
     @Override
     public void doCollect() {
-        this.getGauge().set(RedisBungee.getApi().getAllServers().size());
+        this.getGauge().set(RedisBungeeAPI.getRedisBungeeApi().getAllProxies().size());
     }
 
     @Override

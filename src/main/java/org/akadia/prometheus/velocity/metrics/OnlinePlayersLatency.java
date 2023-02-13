@@ -1,10 +1,7 @@
 package org.akadia.prometheus.velocity.metrics;
 
-import com.velocitypowered.api.proxy.Player;
 import org.akadia.prometheus.interfaces.SummaryMetric;
 import org.akadia.prometheus.velocity.PrometheusVelocityExporter;
-
-import java.util.Collection;
 
 public class OnlinePlayersLatency extends SummaryMetric {
 
@@ -14,10 +11,7 @@ public class OnlinePlayersLatency extends SummaryMetric {
 
     @Override
     public void doCollect() {
-        Collection<Player> allPlayers = ((PrometheusVelocityExporter) getPlugin()).getProxyServer().getAllPlayers();
-        for (Player player : allPlayers) {
-            this.getSummary().labels(player.getUsername()).observe(player.getPing());
-        }
+        ((PrometheusVelocityExporter) getPlugin()).getProxyServer().getAllPlayers().forEach(player -> this.getSummary().labels(player.getUsername()).observe(player.getPing()));
     }
 
 

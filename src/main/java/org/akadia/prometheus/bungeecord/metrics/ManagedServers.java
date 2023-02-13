@@ -11,7 +11,13 @@ public class ManagedServers extends GauageMetric {
 
     @Override
     public void doCollect() {
-        this.getGauge().set(((PrometheusBungeeCordExporter) getPlugin()).getProxy().getServers().size());
+        this.getGauge()
+                .set(
+                        ((PrometheusBungeeCordExporter) getPlugin())
+                                .getProxy()
+                                .getServers()
+                                .size()
+                );
     }
 
     @Override

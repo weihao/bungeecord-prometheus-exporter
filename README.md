@@ -1,6 +1,7 @@
 [![Release](https://github.com/weihao/bungeecord-prometheus-exporter/actions/workflows/release.yml/badge.svg)](https://github.com/weihao/bungeecord-prometheus-exporter/actions/workflows/release.yml)
 ![GitHub all releases](https://img.shields.io/github/downloads/weihao/bungeecord-prometheus-exporter/total)
 <a href="https://www.buymeacoffee.com/nokb"><img src="https://img.buymeacoffee.com/button-api/?text=Buy Me a Coffee&emoji=☕&slug=nokb&button_colour=f07167&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=FFDD00" height="20px" /></a>
+
 # BungeeCord Prometheus Exporter
 
 A **plugin** that exports network stats for Prometheus.
@@ -77,6 +78,8 @@ You can use labels in your Prometheus scrape configuration to distinguish betwee
 
 ## Notes
 
-RedisBungee is supported but [disabled by default](https://github.com/weihao/bungeecord-prometheus-exporter/blob/main/src/main/resources/config.json). RedisBungee metrics are not used in the dashboard because we are
+RedisBungee is supported
+but [disabled by default](https://github.com/weihao/bungeecord-prometheus-exporter/blob/main/src/main/resources/config.json).
+RedisBungee metrics are not used in the dashboard because we are
 already collecting metrics from single instances. However, if you still want to integrate with RedisBungee, free feel to
 enable it and modify the dashboard.

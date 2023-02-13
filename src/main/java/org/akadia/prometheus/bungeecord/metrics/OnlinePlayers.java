@@ -1,10 +1,7 @@
 package org.akadia.prometheus.bungeecord.metrics;
 
-import net.md_5.bungee.api.config.ServerInfo;
 import org.akadia.prometheus.bungeecord.PrometheusBungeeCordExporter;
 import org.akadia.prometheus.interfaces.GauageMetric;
-
-import java.util.Map;
 
 public class OnlinePlayers extends GauageMetric {
 
@@ -14,10 +11,10 @@ public class OnlinePlayers extends GauageMetric {
 
     @Override
     public void doCollect() {
-        Map<String, ServerInfo> servers = ((PrometheusBungeeCordExporter) getPlugin()).getProxy().getServers();
-        for (String key : servers.keySet()) {
-            this.getGauge().labels(key).set(servers.get(key).getPlayers().size());
-        }
+        ((PrometheusBungeeCordExporter) getPlugin())
+                .getProxy()
+                .getServers()
+                .forEach((key, value) -> this.getGauge().labels(key).set(value.getPlayers().size()));
     }
 
     @Override

@@ -1,10 +1,7 @@
 package org.akadia.prometheus.velocity.metrics;
 
-import com.velocitypowered.api.proxy.server.RegisteredServer;
 import org.akadia.prometheus.interfaces.GauageMetric;
 import org.akadia.prometheus.velocity.PrometheusVelocityExporter;
-
-import java.util.Collection;
 
 public class OnlinePlayers extends GauageMetric {
 
@@ -14,10 +11,9 @@ public class OnlinePlayers extends GauageMetric {
 
     @Override
     public void doCollect() {
-        Collection<RegisteredServer> servers = ((PrometheusVelocityExporter) getPlugin()).getProxyServer().getAllServers();
-        for (RegisteredServer server : servers) {
-            this.getGauge().labels(server.getServerInfo().getName()).set(server.getPlayersConnected().size());
-        }
+        ((PrometheusVelocityExporter) getPlugin()).getProxyServer().getAllServers().forEach(registeredServer ->
+                this.getGauge().labels(registeredServer.getServerInfo().getName()).set(registeredServer.getPlayersConnected().size()));
+
     }
 
     @Override

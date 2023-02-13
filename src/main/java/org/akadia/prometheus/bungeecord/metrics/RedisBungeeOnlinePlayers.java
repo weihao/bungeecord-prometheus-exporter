@@ -1,6 +1,6 @@
 package org.akadia.prometheus.bungeecord.metrics;
 
-import com.imaginarycode.minecraft.redisbungee.RedisBungee;
+import com.imaginarycode.minecraft.redisbungee.RedisBungeeAPI;
 import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.interfaces.GauageMetric;
 
@@ -12,10 +12,13 @@ public class RedisBungeeOnlinePlayers extends GauageMetric {
 
     @Override
     public void doCollect() {
-        for (String key : RedisBungee.getApi().getAllServers()) {
-            int size = RedisBungee.getApi().getPlayersOnServer(key).size();
-            this.getGauge().labels(key).set(size);
-        }
+        RedisBungeeAPI.getRedisBungeeApi()
+                .getAllProxies()
+                .forEach(proxy -> this.getGauge()
+                        .labels(proxy)
+                        .set(RedisBungeeAPI.getRedisBungeeApi()
+                                .getPlayersOnProxy(proxy)
+                                .size()));
     }
 
     @Override

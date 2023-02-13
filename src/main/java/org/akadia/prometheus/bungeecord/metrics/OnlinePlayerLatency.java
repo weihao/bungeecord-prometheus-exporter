@@ -1,23 +1,22 @@
 package org.akadia.prometheus.bungeecord.metrics;
 
-import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.akadia.prometheus.bungeecord.PrometheusBungeeCordExporter;
 import org.akadia.prometheus.interfaces.SummaryMetric;
 
-import java.util.Collection;
+public class OnlinePlayerLatency extends SummaryMetric {
 
-public class OnlinePlayersLatency extends SummaryMetric {
-
-    public OnlinePlayersLatency(PrometheusBungeeCordExporter plugin) {
+    public OnlinePlayerLatency(PrometheusBungeeCordExporter plugin) {
         super(plugin);
     }
 
     @Override
     public void doCollect() {
-        Collection<ProxiedPlayer> players = ((PrometheusBungeeCordExporter) getPlugin()).getProxy().getPlayers();
-        for (ProxiedPlayer player : players) {
-            this.getSummary().labels(player.getName()).observe(player.getPing());
-        }
+        ((PrometheusBungeeCordExporter) getPlugin())
+                .getProxy()
+                .getPlayers()
+                .forEach(proxiedPlayer ->
+                        this.getSummary().labels(proxiedPlayer.getName()).observe(proxiedPlayer.getPing())
+                );
     }
 
     @Override
