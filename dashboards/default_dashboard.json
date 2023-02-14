@@ -78,6 +78,7 @@
           },
           "decimals": 0,
           "mappings": [],
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -123,21 +124,15 @@
       "targets": [
         {
           "datasource": "${DS_PROMETHEUS}",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum by (server) (bungeecord_online_players{proxy_name=~\"$proxy\"})",
+          "expr": "sum by (server) (bungeecord_online_player{proxy_name=~\"$proxy\"})",
           "hide": false,
+          "instant": false,
           "interval": "",
           "legendFormat": "{{server}}",
+          "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": "${DS_PROMETHEUS}",
-          "exemplar": false,
-          "expr": "sum(bungeecord_online_players{proxy_name=~\"$proxy\"})",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "total",
-          "refId": "B"
         }
       ],
       "title": "Online Players",
@@ -743,14 +738,18 @@
       "targets": [
         {
           "datasource": "${DS_PROMETHEUS}",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(bungeecord_online_players{proxy_name=~\"$proxy\"})",
+          "expr": "sum(bungeecord_online_player{proxy_name=~\"$proxy\"}) OR on() vector(0)",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
       "title": "Player Count",
+      "transformations": [],
       "type": "stat"
     },
     {
@@ -831,6 +830,7 @@
             "inspect": false
           },
           "mappings": [],
+          "noValue": "No One 💤",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -862,7 +862,8 @@
           ],
           "show": false
         },
-        "showHeader": true
+        "showHeader": true,
+        "sortBy": []
       },
       "pluginVersion": "9.3.6",
       "targets": [
@@ -870,7 +871,7 @@
           "datasource": "${DS_PROMETHEUS}",
           "editorMode": "code",
           "exemplar": false,
-          "expr": "bungeecord_online_player_latency >= 0",
+          "expr": "bungeecord_online_player >= 0",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -892,7 +893,8 @@
               "job": true,
               "name": false,
               "proxy_name": true,
-              "quantile": true
+              "quantile": true,
+              "server": false
             },
             "indexByName": {},
             "renameByName": {}
@@ -946,6 +948,6 @@
   "timezone": "",
   "title": "Minecraft Network",
   "uid": "AltFNh7nz",
-  "version": 2,
+  "version": 7,
   "weekStart": ""
 }

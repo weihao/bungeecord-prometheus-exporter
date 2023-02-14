@@ -20,10 +20,6 @@ public class ConfigManager {
         Gson gson = new Gson();
         // convert JSON file to map
         config = gson.fromJson(reader, Map.class);
-
-        for (Map.Entry<?, ?> entry : config.entrySet()) {
-            System.out.println(entry.getKey() + "=" + entry.getValue());
-        }
     }
 
     public Map<String, String> getConfig() {

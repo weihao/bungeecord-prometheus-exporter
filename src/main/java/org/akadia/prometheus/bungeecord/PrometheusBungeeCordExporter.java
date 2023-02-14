@@ -13,9 +13,9 @@ import org.akadia.prometheus.bungeecord.listeners.PlayerLeftNetworkEventListener
 import org.akadia.prometheus.bungeecord.listeners.ProxyPingEventListener;
 import org.akadia.prometheus.bungeecord.metrics.InstalledNetworkPlugins;
 import org.akadia.prometheus.bungeecord.metrics.ManagedServers;
+import org.akadia.prometheus.bungeecord.metrics.OnlinePlayer;
 import org.akadia.prometheus.bungeecord.metrics.OnlinePlayerLatency;
-import org.akadia.prometheus.bungeecord.metrics.OnlinePlayers;
-import org.akadia.prometheus.bungeecord.metrics.RedisBungeeOnlinePlayers;
+import org.akadia.prometheus.bungeecord.metrics.RedisBungeeOnlinePlayer;
 import org.akadia.prometheus.bungeecord.metrics.RedisBungeeOnlineProxies;
 import org.akadia.prometheus.config.ConfigManager;
 import org.akadia.prometheus.interfaces.Configurable;
@@ -65,14 +65,14 @@ public class PrometheusBungeeCordExporter extends Plugin implements PrometheusEx
         configurables.add(new JvmGarbageCollectorWrapper(this));
         configurables.add(new JvmMemory(this));
         configurables.add(new JvmThreadsWrapper(this));
-        configurables.add(new OnlinePlayers(this));
+        configurables.add(new OnlinePlayer(this));
         configurables.add(new OnlinePlayerLatency(this));
         configurables.add(new ManagedServers(this));
         configurables.add(new InstalledNetworkPlugins(this));
 
         configurables.add(new PlayerJoinedNetworkEventListener(this));
         configurables.add(new PlayerLeftNetworkEventListener(this));
-        configurables.add(new RedisBungeeOnlinePlayers(this));
+        configurables.add(new RedisBungeeOnlinePlayer(this));
         configurables.add(new RedisBungeeOnlineProxies(this));
 
         for (Configurable configurable : configurables) {

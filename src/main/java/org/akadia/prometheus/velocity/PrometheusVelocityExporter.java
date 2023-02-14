@@ -23,7 +23,7 @@ import org.akadia.prometheus.velocity.listeners.PlayerDisconnectEventListener;
 import org.akadia.prometheus.velocity.listeners.ProxyPingEventListener;
 import org.akadia.prometheus.velocity.metrics.InstalledNetworkPlugins;
 import org.akadia.prometheus.velocity.metrics.ManagedServers;
-import org.akadia.prometheus.velocity.metrics.OnlinePlayers;
+import org.akadia.prometheus.velocity.metrics.OnlinePlayer;
 import org.akadia.prometheus.velocity.metrics.OnlinePlayersLatency;
 import org.bstats.velocity.Metrics;
 import org.slf4j.Logger;
@@ -83,7 +83,7 @@ public class PrometheusVelocityExporter implements PrometheusExporter {
         configurables.add(new JvmGarbageCollectorWrapper(this));
         configurables.add(new JvmMemory(this));
         configurables.add(new JvmThreadsWrapper(this));
-        configurables.add(new OnlinePlayers(this));
+        configurables.add(new OnlinePlayer(this));
         configurables.add(new OnlinePlayersLatency(this));
         configurables.add(new ManagedServers(this));
         configurables.add(new InstalledNetworkPlugins(this));
