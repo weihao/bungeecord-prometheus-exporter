@@ -12,8 +12,12 @@ public class OnlinePlayer extends GauageMetric {
     @Override
     public void doCollect() {
         this.getGauge().clear();
+        
         ((PrometheusVelocityExporter) getPlugin()).getProxyServer().getAllServers().forEach(registeredServer ->
-                registeredServer.getPlayersConnected().forEach(player -> this.getGauge().labels(registeredServer.getServerInfo().getName(), player.getUsername()).set(1)));
+        {
+            this.getGauge().labels(registeredServer.getServerInfo().getName()).set(0);
+            registeredServer.getPlayersConnected().forEach(player -> this.getGauge().labels(registeredServer.getServerInfo().getName(), player.getUsername()).set(1));
+        });
     }
 
     @Override
