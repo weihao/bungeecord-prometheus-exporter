@@ -13,12 +13,19 @@ public class RedisBungeeOnlinePlayer extends GauageMetric {
     @Override
     public void doCollect() {
         this.getGauge().clear();
-
         RedisBungeeAPI.getRedisBungeeApi()
                 .getServerToPlayers()
-                .forEach((server, uuid) -> this.getGauge()
-                        .labels(server, uuid.toString())
-                        .set(1));
+                .asMap()
+                .forEach((server, players) -> {
+                    this.getGauge()
+                            .labels(server)
+                            .set(0);
+                    players.forEach(player -> {
+                        this.getGauge()
+                                .labels(server, player.toString())
+                                .set(1);
+                    });
+                });
     }
 
     @Override
