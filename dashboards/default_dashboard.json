@@ -740,10 +740,10 @@
           "datasource": "${DS_PROMETHEUS}",
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(bungeecord_online_player{proxy_name=~\"$proxy\"}) OR on() vector(0)",
+          "expr": "sum(bungeecord_online_player{proxy_name=~\"$proxy\"})",
           "instant": false,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "Online Player",
           "range": true,
           "refId": "A"
         }
@@ -871,7 +871,7 @@
           "datasource": "${DS_PROMETHEUS}",
           "editorMode": "code",
           "exemplar": false,
-          "expr": "bungeecord_online_player >= 0",
+          "expr": "bungeecord_online_player > 0",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -948,6 +948,6 @@
   "timezone": "",
   "title": "Minecraft Network",
   "uid": "AltFNh7nz",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }
