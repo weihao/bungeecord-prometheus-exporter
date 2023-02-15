@@ -18,7 +18,7 @@ public class RedisBungeeOnlinePlayer extends GauageMetric {
                 .asMap()
                 .forEach((server, players) -> {
                     this.getGauge()
-                            .labels(server)
+                            .labels(server, "")
                             .set(0);
                     players.forEach(player -> {
                         this.getGauge()

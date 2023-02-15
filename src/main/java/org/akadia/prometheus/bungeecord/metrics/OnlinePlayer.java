@@ -17,7 +17,7 @@ public class OnlinePlayer extends GauageMetric {
                 .getProxy()
                 .getServers()
                 .forEach((key, value) -> {
-                            this.getGauge().labels(key).set(0);
+                            this.getGauge().labels(key, "").set(0);
                             value.getPlayers()
                                     .forEach(proxiedPlayer ->
                                             this.getGauge().labels(key, proxiedPlayer.getName()).set(1));
