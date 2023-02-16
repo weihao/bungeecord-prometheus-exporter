@@ -83,3 +83,9 @@ but [disabled by default](https://github.com/weihao/bungeecord-prometheus-export
 RedisBungee metrics are not used in the dashboard because we are
 already collecting metrics from single instances. However, if you still want to integrate with RedisBungee, free feel to
 enable it and modify the dashboard.
+
+## Links
+
+This project is indexed at:
+- [exporters](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exporters.md#miscellaneous)
+- [ports](https://github.com/prometheus/prometheus/wiki/Default-port-allocations#exporters-starting-at-9100)
