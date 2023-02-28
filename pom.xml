@@ -34,7 +34,7 @@
         <org.mockito.version>5.1.1</org.mockito.version>
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
     </properties>
 
     <repositories>
