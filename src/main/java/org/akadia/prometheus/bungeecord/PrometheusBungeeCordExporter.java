@@ -1,5 +1,6 @@
 package org.akadia.prometheus.bungeecord;
 
+import com.velocitypowered.api.event.player.PlayerChatEvent;
 import io.prometheus.client.CollectorRegistry;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -7,6 +8,7 @@ import org.akadia.prometheus.MetricRegistry;
 import org.akadia.prometheus.MetricsServer;
 import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.bungeecord.listeners.LoginEventListener;
+import org.akadia.prometheus.bungeecord.listeners.PlayerChatEventListener;
 import org.akadia.prometheus.bungeecord.listeners.PlayerDisconnectEventListener;
 import org.akadia.prometheus.bungeecord.listeners.PlayerJoinedNetworkEventListener;
 import org.akadia.prometheus.bungeecord.listeners.PlayerLeftNetworkEventListener;
@@ -61,6 +63,7 @@ public class PrometheusBungeeCordExporter extends Plugin implements PrometheusEx
         List<Configurable> configurables = new ArrayList<>();
         configurables.add(new LoginEventListener(this));
         configurables.add(new PlayerDisconnectEventListener(this));
+        configurables.add(new PlayerChatEventListener(this));
         configurables.add(new ProxyPingEventListener(this));
         configurables.add(new JvmGarbageCollectorWrapper(this));
         configurables.add(new JvmMemory(this));

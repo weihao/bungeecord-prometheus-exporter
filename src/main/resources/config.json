@@ -7,6 +7,7 @@
   "jvm_threads": "true",
   "player_connects": "true",
   "player_disconnects": "true",
+  "player_chats": "true",
   "server_list_pings": "true",
   "managed_servers": "true",
   "installed_network_plugins": "true",

@@ -19,6 +19,7 @@ import org.akadia.prometheus.metrics.JvmGarbageCollectorWrapper;
 import org.akadia.prometheus.metrics.JvmMemory;
 import org.akadia.prometheus.metrics.JvmThreadsWrapper;
 import org.akadia.prometheus.velocity.listeners.LoginEventListener;
+import org.akadia.prometheus.velocity.listeners.PlayerChatEventListener;
 import org.akadia.prometheus.velocity.listeners.PlayerDisconnectEventListener;
 import org.akadia.prometheus.velocity.listeners.ProxyPingEventListener;
 import org.akadia.prometheus.velocity.metrics.InstalledNetworkPlugins;
@@ -79,6 +80,7 @@ public class PrometheusVelocityExporter implements PrometheusExporter {
         List<Configurable> configurables = new ArrayList<>();
         configurables.add(new LoginEventListener(this));
         configurables.add(new PlayerDisconnectEventListener(this));
+        configurables.add(new PlayerChatEventListener(this));
         configurables.add(new ProxyPingEventListener(this));
         configurables.add(new JvmGarbageCollectorWrapper(this));
         configurables.add(new JvmMemory(this));
