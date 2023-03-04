@@ -209,8 +209,7 @@
           "calcs": [
             "mean",
             "max",
-            "last",
-            "sum"
+            "last"
           ],
           "displayMode": "table",
           "placement": "bottom",
@@ -225,33 +224,56 @@
       "targets": [
         {
           "datasource": "${DS_PROMETHEUS}",
+          "editorMode": "code",
+          "expr": "increase(bungeecord_player_chats_total{proxy_name=~\"$proxy\"}[1m])",
+          "hide": false,
+          "legendFormat": "chats",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": "${DS_PROMETHEUS}",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(increase(bungeecord_server_list_pings_total{proxy_name=~\"$proxy\"}[1m]))",
+          "expr": "increase(bungeecord_server_list_pings_total{proxy_name=~\"$proxy\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "server list pings",
+          "range": true,
           "refId": "B"
         },
         {
           "datasource": "${DS_PROMETHEUS}",
           "exemplar": false,
-          "expr": "sum(increase(bungeecord_player_connects_total{proxy_name=~\"$proxy\"}[1m]))",
+          "expr": "increase(bungeecord_player_connects_total{proxy_name=~\"$proxy\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "connects",
+          "range": true,
           "refId": "C"
         },
         {
           "datasource": "${DS_PROMETHEUS}",
+          "editorMode": "code",
+          "expr": "increase(bungeecord_player_kicks_total{proxy_name=~\"$proxy\"}[1m])",
+          "hide": false,
+          "legendFormat": "kicks",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": "${DS_PROMETHEUS}",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(increase(bungeecord_player_disconnects_total{proxy_name=~\"$proxy\"}[1m]))",
+          "expr": "increase(bungeecord_player_disconnects_total{proxy_name=~\"$proxy\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "disconnects",
+          "range": true,
           "refId": "F"
         }
       ],
-      "title": "Events",
+      "title": "Events per Minute",
       "type": "timeseries"
     },
     {
@@ -391,7 +413,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -498,7 +520,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "repeat": "proxies",
       "repeatDirection": "v",
       "targets": [
@@ -558,7 +580,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": "${DS_PROMETHEUS}",
@@ -616,7 +638,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": "${DS_PROMETHEUS}",
@@ -674,7 +696,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": "${DS_PROMETHEUS}",
@@ -734,7 +756,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": "${DS_PROMETHEUS}",
@@ -826,7 +848,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [],
@@ -856,6 +880,7 @@
       "id": 25,
       "options": {
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -865,7 +890,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": "${DS_PROMETHEUS}",
@@ -905,7 +930,8 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 37,
+  "revision": 1,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [
     "bungeecord"
@@ -941,7 +967,7 @@
     ]
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},

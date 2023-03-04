@@ -62,11 +62,11 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: io.netty:netty-transport:4.1.63.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: io.netty:netty-resolver:4.1.63.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.yaml:snakeyaml:1.28" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:11.0.13" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:11.0.14" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:11.0.13" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-util:11.0.13" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-io:11.0.13" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:11.0.14" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-util:11.0.14" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-io:11.0.14" level="project" />
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_common:0.16.0" level="project" />
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_hotspot:0.16.0" level="project" />
     <orderEntry type="library" name="Maven: com.jayway.jsonpath:json-path:2.7.0" level="project" />
