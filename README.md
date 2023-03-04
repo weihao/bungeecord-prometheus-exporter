@@ -13,6 +13,9 @@ A **plugin** that exports network stats for Prometheus.
 
 - monitor your server infrastructure
 - track your players, events, and servers
+  - player pings histogram
+  - online player list
+  - server list ping, connects, disconnects, kicks, and chat event counters
 - automates the collection, management and viewing of your data
 - get alerts for service outages
 
