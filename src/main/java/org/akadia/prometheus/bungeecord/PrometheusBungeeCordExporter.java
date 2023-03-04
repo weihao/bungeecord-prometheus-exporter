@@ -1,6 +1,5 @@
 package org.akadia.prometheus.bungeecord;
 
-import com.velocitypowered.api.event.player.PlayerChatEvent;
 import io.prometheus.client.CollectorRegistry;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;

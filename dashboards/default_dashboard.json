@@ -140,6 +140,7 @@
     },
     {
       "datasource": "${DS_PROMETHEUS}",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -244,6 +245,7 @@
         },
         {
           "datasource": "${DS_PROMETHEUS}",
+          "editorMode": "code",
           "exemplar": false,
           "expr": "increase(bungeecord_player_connects_total{proxy_name=~\"$proxy\"}[1m])",
           "hide": false,
