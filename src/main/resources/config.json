@@ -9,6 +9,7 @@
   "player_disconnects": "true",
   "player_kicks": "true",
   "player_chats": "true",
+  "player_commands": "true",
   "server_list_pings": "true",
   "managed_servers": "true",
   "installed_network_plugins": "true",

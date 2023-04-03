@@ -21,7 +21,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.9.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.velocitypowered:velocity-api:3.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.velocitypowered:velocity-api:3.1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:25.1-jre" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.errorprone:error_prone_annotations:2.1.3" level="project" />
@@ -82,15 +82,15 @@
     <orderEntry type="library" name="Maven: org.bstats:bstats-bungeecord:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-base:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-velocity:3.0.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework:RedisBungee:0.10.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-API:0.10.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework:RedisBungee:0.10.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-API:0.10.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: redis.clients:jedis:4.3.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20220320" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-pool2:2.11.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup.okhttp:okhttp:2.7.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup.okio:okio:1.6.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-Bungee:0.10.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-Velocity:0.10.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-Bungee:0.10.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-Velocity:0.10.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter:5.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
@@ -99,11 +99,11 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-params:5.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:5.1.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy:1.12.22" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy-agent:1.12.22" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:5.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy:1.14.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy-agent:1.14.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:3.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-junit-jupiter:5.1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-junit-jupiter:5.2.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.rest-assured:rest-assured:5.1.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.groovy:groovy:4.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.groovy:groovy-xml:4.0.1" level="project" />

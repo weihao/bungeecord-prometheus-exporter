@@ -8,6 +8,7 @@ import org.akadia.prometheus.MetricsServer;
 import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.bungeecord.listeners.LoginEventListener;
 import org.akadia.prometheus.bungeecord.listeners.PlayerChatEventListener;
+import org.akadia.prometheus.bungeecord.listeners.PlayerCommandEventListener;
 import org.akadia.prometheus.bungeecord.listeners.PlayerDisconnectEventListener;
 import org.akadia.prometheus.bungeecord.listeners.PlayerJoinedNetworkEventListener;
 import org.akadia.prometheus.bungeecord.listeners.PlayerKickEventListener;
@@ -64,6 +65,7 @@ public class PrometheusBungeeCordExporter extends Plugin implements PrometheusEx
         configurables.add(new LoginEventListener(this));
         configurables.add(new PlayerDisconnectEventListener(this));
         configurables.add(new PlayerChatEventListener(this));
+        configurables.add(new PlayerCommandEventListener(this));
         configurables.add(new PlayerKickEventListener(this));
         configurables.add(new ProxyPingEventListener(this));
         configurables.add(new JvmGarbageCollectorWrapper(this));

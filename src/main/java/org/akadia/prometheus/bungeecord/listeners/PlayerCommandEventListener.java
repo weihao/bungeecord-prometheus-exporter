@@ -6,15 +6,15 @@ import net.md_5.bungee.event.EventHandler;
 import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.interfaces.CountableMetrics;
 
-public class PlayerChatEventListener extends CountableMetrics implements Listener {
+public class PlayerCommandEventListener extends CountableMetrics implements Listener {
 
-    public PlayerChatEventListener(PrometheusExporter plugin) {
+    public PlayerCommandEventListener(PrometheusExporter plugin) {
         super(plugin);
     }
 
     @EventHandler
-    public void onPlayerChatEvent(ChatEvent event) {
-        if (event.isCommand()) {
+    public void onPlayerCommandEvent(ChatEvent event) {
+        if (!event.isCommand()) {
             return;
         }
         this.getCounter().inc();
@@ -22,11 +22,11 @@ public class PlayerChatEventListener extends CountableMetrics implements Listene
 
     @Override
     public String getHelp() {
-        return "the number of player chat in BungeeCord";
+        return "the number of player commands in BungeeCord";
     }
 
     @Override
     public String getConfigKey() {
-        return "player_chats";
+        return "player_commands";
     }
 }
