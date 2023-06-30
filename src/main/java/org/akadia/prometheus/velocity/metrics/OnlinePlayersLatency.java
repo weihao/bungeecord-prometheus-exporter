@@ -11,7 +11,8 @@ public class OnlinePlayersLatency extends SummaryMetric {
 
     @Override
     public void doCollect() {
-        ((PrometheusVelocityExporter) getPlugin()).getProxyServer().getAllPlayers().forEach(player -> this.getSummary().labels(player.getUsername()).observe(player.getPing()));
+        ((PrometheusVelocityExporter) getPlugin()).getProxyServer().getAllPlayers().forEach(player ->
+                this.getSummary().labels(player.getUsername()).observe(player.getPing()));
     }
 
 
