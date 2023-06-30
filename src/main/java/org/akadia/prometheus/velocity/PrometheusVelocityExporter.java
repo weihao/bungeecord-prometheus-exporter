@@ -111,6 +111,7 @@ public class PrometheusVelocityExporter implements PrometheusExporter {
             server.start();
             this.info("Started Prometheus metrics endpoint at: " + host + ":" + port);
         } catch (Exception e) {
+            e.printStackTrace();
             this.warn("Could not start embedded Jetty server");
         }
 
