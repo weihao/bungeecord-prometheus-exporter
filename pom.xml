@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.akadia</groupId>
-    <artifactId>bungeecord-prometheus-exporter</artifactId>
-    <name>BungeeCordPrometheusExporter</name>
+    <artifactId>velocity-prometheus-exporter</artifactId>
+    <name>VelocityCordPrometheusExporter</name>
     <version>3.2.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <url>https://akadia.org</url>
 
-    <description>BungeeCord Prometheus Exporter</description>
+    <description>Velocity Prometheus Exporter</description>
 
     <scm>
         <url>https://github.com/weihao/bungeecord-prometheus-exporter</url>
@@ -39,10 +39,6 @@
 
     <repositories>
         <repository>
-            <id>bungeecord-repo</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </repository>
-        <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
@@ -62,20 +58,6 @@
             <groupId>com.velocitypowered</groupId>
             <artifactId>velocity-api</artifactId>
             <version>3.1.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-api</artifactId>
-            <version>1.16-R0.5-SNAPSHOT</version>
-            <type>jar</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-api</artifactId>
-            <version>1.16-R0.5-SNAPSHOT</version>
-            <type>javadoc</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -122,12 +104,6 @@
             <artifactId>simpleclient_pushgateway</artifactId>
             <version>0.16.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.bstats</groupId>
-            <artifactId>bstats-bungeecord</artifactId>
-            <version>3.0.0</version>
-            <scope>compile</scope>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.bstats/bstats-velocity -->
         <dependency>
             <groupId>org.bstats</groupId>
@@ -136,12 +112,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.Limework</groupId>
-            <artifactId>RedisBungee</artifactId>
-            <version>0.11.2</version>
-            <scope>provided</scope>
-        </dependency>
         <!--        testing        -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
