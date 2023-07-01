@@ -66,7 +66,7 @@ public class PrometheusVelocityExporter implements PrometheusExporter {
 
     private void startMetricsServer(ConfigManager configManager) {
         try {
-            Metrics metrics = metricsFactory.make(this, 11269);
+            metricsFactory.make(this, 11269);
         } catch (IllegalStateException ex) {
             this.info("bStats Metrics failed to start");
         }
