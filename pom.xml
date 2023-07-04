@@ -26,6 +26,7 @@
         </repository>
     </distributionManagement>
 
+
     <properties>
         <jetty.version>11.0.15</jetty.version>
         <prometheus-client.version>0.16.0</prometheus-client.version>
@@ -70,6 +71,11 @@
             <version>${prometheus-client.version}</version>
         </dependency>
         <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_hotspot</artifactId>
+            <version>${prometheus-client.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <version>${json-path.version}</version>
@@ -78,6 +84,12 @@
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient</artifactId>
+            <version>0.16.0</version>
+        </dependency>
+        <!-- Hotspot JVM metrics-->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_hotspot</artifactId>
             <version>0.16.0</version>
         </dependency>
         <!-- Exposition HTTPServer-->
@@ -92,24 +104,12 @@
             <artifactId>simpleclient_pushgateway</artifactId>
             <version>0.16.0</version>
         </dependency>
-        <!-- Hotspot JVM metrics-->
-        <dependency>
-            <groupId>io.prometheus</groupId>
-            <artifactId>simpleclient_hotspot</artifactId>
-            <version>${prometheus-client.version}</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.bstats/bstats-velocity -->
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-velocity</artifactId>
             <version>3.0.0</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.AlexProgrammerDE.AntiVPN</groupId>
-            <artifactId>Common</artifactId>
-            <version>patch-1-SNAPSHOT</version>
-            <scope>provided</scope>
         </dependency>
 
         <!--        testing        -->
@@ -137,6 +137,7 @@
             <version>5.3.0</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
