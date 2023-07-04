@@ -21,7 +21,7 @@ public class OnlinePlayer extends GauageMetric {
 
         ((PrometheusVelocityExporter) getPlugin()).getProxyServer().getAllServers().forEach(registeredServer -> {
             String serverName = registeredServer.getServerInfo().getName();
-            this.getGauge().labels(serverName, "", "").set(0);
+            this.getGauge().labels(serverName, "", "", "", "", "", "", "", "", "", "").set(0);
             registeredServer.getPlayersConnected().forEach(player -> {
                 String ip = player.getRemoteAddress().getAddress().getHostAddress();
                 VPNResponse response = executor.checkIp(ip, true);
