@@ -32,12 +32,7 @@ public class OnlinePlayer extends GauageMetric {
                         Boolean.toString(player.isOnlineMode()),
                         Boolean.toString(response.isProxy()),
                         response.getMethod(),
-                        response.getCountryName(),
-                        response.getCountryCode(),
-                        response.getIsp(),
-                        response.getTimeZone(),
-                        Double.toString(response.getLongitude()),
-                        Double.toString(response.getLatitude())
+                        response.getTimeZone()
                 ).set(1);
             });
         });
@@ -55,6 +50,6 @@ public class OnlinePlayer extends GauageMetric {
 
     @Override
     public String[] getLabels() {
-        return new String[]{"server", "player", "online_mode", "proxy", "proxy_method", "country_name", "country_code", "isp", "timezone", "longitude", "latitude"};
+        return new String[]{"server", "player", "online_mode", "proxy", "proxy_method", "timezone"};
     }
 }
