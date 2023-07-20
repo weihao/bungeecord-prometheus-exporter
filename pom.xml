@@ -138,8 +138,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.Limework</groupId>
-            <artifactId>RedisBungee</artifactId>
+            <groupId>com.github.proxiodev.redisbungee</groupId>
+            <artifactId>RedisBungee-Bungee</artifactId>
             <version>0.11.3</version>
             <scope>provided</scope>
         </dependency>

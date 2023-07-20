@@ -82,15 +82,12 @@
     <orderEntry type="library" name="Maven: org.bstats:bstats-bungeecord:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-base:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.bstats:bstats-velocity:3.0.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework:RedisBungee:0.10.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-API:0.10.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.proxiodev.redisbungee:RedisBungee-Bungee:0.11.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: redis.clients:jedis:4.3.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20220320" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-pool2:2.11.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup.okhttp:okhttp:2.7.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup.okio:okio:1.6.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-Bungee:0.10.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.Limework.RedisBungee:RedisBungee-Velocity:0.10.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter:5.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
