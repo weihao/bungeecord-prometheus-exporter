@@ -1,4 +1,5 @@
 {
+  "bstats": "true",
   "host": "127.0.0.1",
   "port": "9985",
   "prefix": "bungeecord_",
