@@ -21,7 +21,7 @@ A **plugin** that exports network stats for Prometheus.
 
 ## Runtime Requirement
 
-- Java 11+
+- Java 17+
 
 ## Compatible Proxy
 
