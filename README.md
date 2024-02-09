@@ -13,9 +13,9 @@ A **plugin** that exports network stats for Prometheus.
 
 - monitor your server infrastructure
 - track your players, events, and servers
-  - player pings histogram
-  - online player list
-  - server list ping, connects, disconnects, kicks, and chat event counters
+    - player pings histogram
+    - online player list
+    - server list ping, connects, disconnects, kicks, and chat event counters
 - automates the collection, management and viewing of your data
 - get alerts for service outages
 
@@ -82,7 +82,8 @@ You can use labels in your Prometheus scrape configuration to distinguish betwee
 ## Notes
 
 RedisBungee is supported
-but [disabled by default](https://github.com/weihao/bungeecord-prometheus-exporter/blob/main/src/main/resources/config.json).
+but [disabled by default](https://github.com/weihao/bungeecord-prometheus-exporter/blob/main/src/main/resources/config.json)
+.
 RedisBungee metrics are not used in the dashboard because we are
 already collecting metrics from single instances. However, if you still want to integrate with RedisBungee, free feel to
 enable it and modify the dashboard.

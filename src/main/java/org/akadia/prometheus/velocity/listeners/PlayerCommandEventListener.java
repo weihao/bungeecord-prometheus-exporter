@@ -2,7 +2,6 @@ package org.akadia.prometheus.velocity.listeners;
 
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.command.CommandExecuteEvent;
-import com.velocitypowered.api.event.player.PlayerChatEvent;
 import org.akadia.prometheus.PrometheusExporter;
 import org.akadia.prometheus.interfaces.CountableMetrics;
 
