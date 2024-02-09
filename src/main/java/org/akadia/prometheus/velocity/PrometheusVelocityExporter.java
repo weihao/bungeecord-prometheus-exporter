@@ -7,7 +7,6 @@ import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import io.prometheus.client.CollectorRegistry;
-import net.md_5.bungee.command.PlayerCommand;
 import org.akadia.prometheus.MetricRegistry;
 import org.akadia.prometheus.MetricsServer;
 import org.akadia.prometheus.PrometheusExporter;
