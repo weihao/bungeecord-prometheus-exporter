@@ -23,9 +23,9 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Release
-        uses: qcastel/github-actions-maven-release@v1.12.24
+        uses: qcastel/github-actions-maven-release@master
         env:
-          JAVA_HOME: /usr/lib/jvm/java-11-openjdk/
+          JAVA_HOME: /usr/lib/jvm/java-17-openjdk/
         with:
           access-token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
           release-branch-name: "main"
