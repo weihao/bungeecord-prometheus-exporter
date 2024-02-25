@@ -65,10 +65,12 @@ public class PrometheusVelocityExporter implements PrometheusExporter {
     }
 
     private void startMetricsServer(ConfigManager configManager) {
-        try {
-            metricsFactory.make(this, 11269);
-        } catch (IllegalStateException ex) {
-            this.info("bStats Metrics failed to start");
+        if (configManager.getConfig().get("bstats").equals("true")) {
+            try {
+                metricsFactory.make(this, 11269);
+            } catch (IllegalStateException ex) {
+                this.info("bStats Metrics failed to start");
+            }
         }
 
         this.prefix = configManager.getConfig().getOrDefault("prefix", "bungeecord_");

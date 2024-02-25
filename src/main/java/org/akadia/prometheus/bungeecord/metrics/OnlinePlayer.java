@@ -1,5 +1,6 @@
 package org.akadia.prometheus.bungeecord.metrics;
 
+import net.md_5.bungee.api.ProxyServer;
 import org.akadia.prometheus.bungeecord.PrometheusBungeeCordExporter;
 import org.akadia.prometheus.interfaces.GauageMetric;
 
@@ -13,17 +14,12 @@ public class OnlinePlayer extends GauageMetric {
     public void doCollect() {
         this.getGauge().clear();
 
-        ((PrometheusBungeeCordExporter) getPlugin())
-                .getProxy()
-                .getServers()
-                .forEach((key, value) -> {
-                            this.getGauge().labels(key, "").set(0);
-                            value.getPlayers()
-                                    .forEach(proxiedPlayer ->
-                                            this.getGauge().labels(key, proxiedPlayer.getName()).set(1));
-
-                        }
-                );
+        ProxyServer proxy = ((PrometheusBungeeCordExporter) getPlugin()).getProxy();
+        proxy.getServers().forEach((key, value) -> {
+            this.getGauge().labels(key, "").set(0);
+            value.getPlayers().forEach(proxiedPlayer ->
+                    this.getGauge().labels(key, proxiedPlayer.getName(), Boolean.toString(proxy.getConfig().isOnlineMode())).set(1));
+        });
     }
 
     @Override
@@ -38,6 +34,6 @@ public class OnlinePlayer extends GauageMetric {
 
     @Override
     public String[] getLabels() {
-        return new String[]{"server", "player"};
+        return new String[]{"server", "player", "online_mode"};
     }
 }

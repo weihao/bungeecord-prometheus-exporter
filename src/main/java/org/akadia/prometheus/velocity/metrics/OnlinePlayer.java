@@ -34,6 +34,6 @@ public class OnlinePlayer extends GauageMetric {
 
     @Override
     public String[] getLabels() {
-        return new String[]{"server", "player"};
+        return new String[]{"server", "player", "online_mode"};
     }
 }

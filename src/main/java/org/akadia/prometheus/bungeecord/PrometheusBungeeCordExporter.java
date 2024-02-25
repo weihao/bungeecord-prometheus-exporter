@@ -50,7 +50,7 @@ public class PrometheusBungeeCordExporter extends Plugin implements PrometheusEx
     private void startMetricsServer(ConfigManager configManager) {
         if (configManager.getConfig().get("bstats").equals("true")) {
             try {
-                Metrics metrics = new Metrics(this, 11269);
+                new Metrics(this, 11269);
             } catch (IllegalStateException ex) {
                 getLogger().info("bStats Metrics failed to start");
             }
