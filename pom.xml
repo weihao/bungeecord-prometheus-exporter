@@ -139,7 +139,7 @@
         <dependency>
             <groupId>com.github.proxiodev.redisbungee</groupId>
             <artifactId>RedisBungee-Bungee</artifactId>
-            <version>0.11.4</version>
+            <version>0.12.2</version>
             <scope>provided</scope>
         </dependency>
         <!--        testing        -->
