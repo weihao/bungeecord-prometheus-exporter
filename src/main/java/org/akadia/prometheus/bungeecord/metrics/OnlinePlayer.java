@@ -16,7 +16,7 @@ public class OnlinePlayer extends GauageMetric {
 
         ProxyServer proxy = ((PrometheusBungeeCordExporter) getPlugin()).getProxy();
         proxy.getServers().forEach((key, value) -> {
-            this.getGauge().labels(key, "").set(0);
+            this.getGauge().labels(key, "", "").set(0);
             value.getPlayers().forEach(proxiedPlayer ->
                     this.getGauge().labels(key, proxiedPlayer.getName(), Boolean.toString(proxy.getConfig().isOnlineMode())).set(1));
         });
