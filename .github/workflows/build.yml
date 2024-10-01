@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
@@ -23,7 +23,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact
         with:
           name: jar artifact
           path: /home/runner/work/bungeecord-prometheus-exporter/bungeecord-prometheus-exporter/target/bungeecord-prometheus-exporter-*.jar
