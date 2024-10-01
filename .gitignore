@@ -28,3 +28,6 @@ target
 act
 
 .attach_pid*
+
+# plugins
+plugins

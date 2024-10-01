@@ -1,0 +1,38 @@
+services:
+  velocity:
+    image: itzg/mc-proxy
+    ports:
+      - "25565:25565"
+      - "9985:9985"
+    volumes:
+      - "./velocity/plugins:/server/plugins" # <- read/write
+      - "./velocity/config:/config:ro"
+    depends_on:
+      - smp
+      - lobby
+    environment:
+      TYPE: "VELOCITY"
+      VELOCITY_VERSION: "latest"
+      MEMORY: "256m"
+
+
+  smp:
+    image: itzg/minecraft-server
+    environment:
+      EULA: "TRUE"
+      ONLINE_MODE: "FALSE"
+      TYPE: "PAPER"
+      MAX_MEMORY: "1G"
+      COPY_CONFIG_DEST: "/data"
+      USE_AIKAR_FLAGS: "FALSE"
+
+  lobby:
+    image: itzg/minecraft-server
+    environment:
+      EULA: "TRUE"
+      ONLINE_MODE: "FALSE"
+      TYPE: "PAPER"
+      MAX_MEMORY: "1G"
+      COPY_CONFIG_DEST: "/data"
+      USE_AIKAR_FLAGS: "FALSE"
+

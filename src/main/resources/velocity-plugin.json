@@ -1,0 +1,1 @@
+{"id":"velocity-prometheus-exporter","name":"Velocity Prometheus Exporter","version":"1.0.0","authors":["akadia"],"dependencies":[],"main":"org.akadia.prometheus.velocity.PrometheusVelocityExporter"}
