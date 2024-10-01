@@ -1,20 +1,19 @@
 services:
-  velocity:
+  bungeecord:
     image: itzg/mc-proxy
     ports:
       - "25565:25565"
       - "9985:9985"
     volumes:
-      - "./velocity/plugins:/server/plugins" # <- read/write
-      - "./velocity/config:/config:ro"
+      - "./bungeecord/plugins:/server/plugins" # <- read/write
+      - "./bungeecord/config:/config:ro"
     depends_on:
       - smp
       - lobby
     environment:
-      TYPE: "VELOCITY"
+      TYPE: "WATERFALL"
       VELOCITY_VERSION: "latest"
       MEMORY: "256m"
-
 
   smp:
     image: itzg/minecraft-server
