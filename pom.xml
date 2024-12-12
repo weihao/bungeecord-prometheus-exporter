@@ -28,7 +28,7 @@
 
 
     <properties>
-        <jetty.version>11.0.24</jetty.version>
+        <jetty.version>12.0.16</jetty.version>
         <prometheus-client.version>0.16.0</prometheus-client.version>
         <json-path.version>2.9.0</json-path.version>
         <org.mockito.version>5.14.2</org.mockito.version>
