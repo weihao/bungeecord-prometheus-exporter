@@ -3,6 +3,36 @@ updates:
   - package-ecosystem: maven
     directory: "/"
     schedule:
-      interval: daily
+      interval: weekly
+      day: monday
       time: "10:00"
     open-pull-requests-limit: 10
+    groups:
+      # One PR per family rather than one per artifact; the Prometheus and JUnit
+      # modules are always released together and must move together.
+      prometheus:
+        patterns:
+          - "io.prometheus:*"
+      testing:
+        patterns:
+          - "org.junit*:*"
+          - "org.mockito:*"
+          - "org.assertj:*"
+          - "org.testcontainers:*"
+      maven-plugins:
+        patterns:
+          - "org.apache.maven.plugins:*"
+    ignore:
+      # Both are pinned on purpose to the oldest API revision that still has every
+      # symbol used, so that one jar loads on old and new proxies alike. Bumping them
+      # raises the minimum supported proxy version. See docs/COMPATIBILITY.md.
+      - dependency-name: "com.velocitypowered:velocity-api"
+      - dependency-name: "net.md-5:bungeecord-api"
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "10:00"
+    open-pull-requests-limit: 5

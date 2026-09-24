@@ -1,0 +1,117 @@
+# Proxy Prometheus Exporter
+# https://github.com/weihao/bungeecord-prometheus-exporter
+#
+# Every setting below can be overridden without touching this file, which is what you
+# want in a container. Precedence, highest first:
+#
+#   1. environment variable   MC_PROXY_EXPORTER_PORT=9985
+#   2. system property        -Dmc.proxy.exporter.port=9985
+#   3. this file
+#   4. the built-in default
+#
+# The environment variable name is the setting's path, upper-cased, with dots and
+# dashes replaced by underscores:
+#   metrics.players-online -> MC_PROXY_EXPORTER_METRICS_PLAYERS_ONLINE
+#   collection.backend-ping-interval-seconds
+#                          -> MC_PROXY_EXPORTER_COLLECTION_BACKEND_PING_INTERVAL_SECONDS
+
+# Address the metrics endpoint binds to.
+# Use 0.0.0.0 in Docker so Prometheus can reach it; use 127.0.0.1 on a bare host to
+# keep the endpoint off the public internet.
+host: 0.0.0.0
+
+# TCP port. 9985 is this exporter's allocation in the Prometheus port registry.
+port: 9985
+
+# HTTP path the metrics are served on.
+path: /metrics
+
+# Prefix for every metric this plugin defines.
+# Standard jvm_* and process_* metrics are deliberately NOT prefixed, so that
+# off-the-shelf JVM dashboards keep working.
+namespace: minecraft_proxy
+
+# HTTP basic auth for the metrics endpoint.
+# Prometheus supports this via basic_auth in scrape_configs.
+#
+# Note: enabling this also protects /-/healthy, so a Kubernetes liveness probe or a
+# Docker HEALTHCHECK must send the same credentials or it will see 401.
+#
+# The password is used exactly as written - leading and trailing spaces are significant.
+auth:
+  enabled: false
+  username: ""
+  password: ""
+
+collection:
+  # How often each backend server is server-list-pinged, in seconds.
+  # This is what drives minecraft_proxy_server_up. Set to 0 to disable.
+  backend-ping-interval-seconds: 30
+
+  # How long to wait for a backend to answer before declaring it down.
+  backend-ping-timeout-seconds: 5
+
+  # How often player latency is sampled into the histogram, in seconds.
+  # Set to 0 to disable.
+  player-ping-sample-interval-seconds: 15
+
+  # Hard cap on distinct label combinations per metric.
+  # A runaway label set can take a Prometheus server down; past this limit new
+  # combinations are dropped and counted in
+  # minecraft_proxy_exporter_series_dropped_total instead.
+  max-series-per-metric: 2000
+
+metrics:
+  # Standard JVM and process metrics (jvm_memory_used_bytes, process_cpu_seconds_total, ...)
+  jvm: true
+
+  # minecraft_proxy_info, _start_time_seconds, _uptime_seconds
+  proxy-info: true
+
+  # minecraft_proxy_players_online
+  players-online: true
+
+  # minecraft_proxy_server_players_online{server}
+  players-per-server: true
+
+  # minecraft_proxy_player_ping_seconds histogram across all players.
+  # Use histogram_quantile() on this rather than enabling the per-player metrics below.
+  player-ping-histogram: true
+
+  # minecraft_proxy_servers_registered, minecraft_proxy_server_info{server,address}
+  servers: true
+
+  # minecraft_proxy_server_up{server} and friends. Requires backend-ping-interval-seconds > 0.
+  backend-health: true
+
+  # minecraft_proxy_plugins_installed, minecraft_proxy_plugin_info{plugin,version}
+  plugins: true
+
+  # Event counters: logins, disconnects, kicks, chat, commands, server switches, list pings
+  events: true
+
+  # --- high cardinality, off by default -------------------------------------------
+  # Each of these emits one time series PER PLAYER. On a network with a large player
+  # base this is the fastest way to overwhelm a Prometheus server. The cap in
+  # collection.max-series-per-metric limits the damage, but prefer the aggregate
+  # metrics above unless you specifically need per-player data.
+
+  # minecraft_proxy_player_online{player,uuid,server}
+  player-list: false
+
+  # minecraft_proxy_player_latency_seconds{player,uuid,server}
+  player-ping-per-player: false
+
+  # Adds a {command} label to minecraft_proxy_commands_total.
+  # Command input is player-controlled, so this label is attacker-influenced.
+  command-label: false
+  # --------------------------------------------------------------------------------
+
+  # Network-wide counts from RedisBungee / ValioBungee. Works on BungeeCord and
+  # Velocity: the API is bound reflectively, so no particular fork is required.
+  # Off by default: these values are identical on every proxy in the network, so
+  # summing them across instances multiplies the real number.
+  redisbungee: false
+
+# Anonymous usage statistics: https://bstats.org/plugin/bungeecord/BungeeCord%20Prometheus%20Exporter
+bstats: true

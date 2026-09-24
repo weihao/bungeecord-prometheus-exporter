@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.akadia</groupId>
+        <artifactId>bungeecord-prometheus-exporter-parent</artifactId>
+        <version>4.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>exporter-dist</artifactId>
+    <name>Proxy Prometheus Exporter :: Distribution</name>
+    <description>
+        Single plugin jar. BungeeCord loads it through bungee.yml and Velocity through
+        velocity-plugin.json; each proxy only ever touches its own adapter classes, so one
+        artifact serves both.
+    </description>
+
+    <properties>
+        <!--
+          Relocation root. Minecraft proxies load plugins with class loaders that can see
+          each other, so an unrelocated library is a version conflict waiting for the next
+          plugin that bundles the same one.
+        -->
+        <shade.relocation.base>org.akadia.prometheus.libs</shade.relocation.base>
+
+        <!--
+          Release asset name. Kept as bungeecord-prometheus-exporter even though the plugin
+          now serves both proxies, so existing download URLs and automation keep working.
+        -->
+        <distribution.name>bungeecord-prometheus-exporter-${project.version}</distribution.name>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.akadia</groupId>
+            <artifactId>exporter-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.akadia</groupId>
+            <artifactId>exporter-bungeecord</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.akadia</groupId>
+            <artifactId>exporter-velocity</artifactId>
+        </dependency>
+
+        <!-- End-to-end tests drive real proxies in Docker against the shaded jar. -->
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!--
+          NOTE: finalName is deliberately NOT overridden here.
+
+          If the shaded output is written to the same path the jar plugin uses for the
+          project artifact, the next incremental build finds that path already up to date,
+          skips repackaging, and then shades the previously shaded jar. Duplicate entries
+          resolve to the first occurrence, so stale classes from the old shaded jar win
+          over freshly compiled ones and the build silently ships old code.
+
+          Instead the project artifact keeps its natural name and the shade execution
+          writes the distributable under its own finalName, so the two never collide.
+        -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <shadedArtifactAttached>false</shadedArtifactAttached>
+                            <!-- The distributable, named separately from the project artifact. -->
+                            <finalName>${distribution.name}</finalName>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <manifestEntries>
+                                        <Implementation-Title>${project.parent.name}</Implementation-Title>
+                                        <Implementation-Version>${project.version}</Implementation-Version>
+                                        <Specification-Version>${maven.compiler.release}</Specification-Version>
+                                    </manifestEntries>
+                                </transformer>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
+                            <relocations>
+                                <relocation>
+                                    <pattern>io.prometheus</pattern>
+                                    <shadedPattern>${shade.relocation.base}.prometheus</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.yaml.snakeyaml</pattern>
+                                    <shadedPattern>${shade.relocation.base}.snakeyaml</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <!-- bStats requires bundled copies to be relocated. -->
+                                    <pattern>org.bstats</pattern>
+                                    <shadedPattern>${shade.relocation.base}.bstats</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>META-INF/versions/9/module-info.class</exclude>
+                                        <exclude>module-info.class</exclude>
+                                        <exclude>OSGI-INF/**</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <exporter.jar>${project.build.directory}/${distribution.name}.jar</exporter.jar>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

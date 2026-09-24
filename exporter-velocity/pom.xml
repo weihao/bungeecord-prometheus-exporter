@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.akadia</groupId>
+        <artifactId>bungeecord-prometheus-exporter-parent</artifactId>
+        <version>4.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>exporter-velocity</artifactId>
+    <name>Proxy Prometheus Exporter :: Velocity</name>
+    <description>Velocity adapter</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.akadia</groupId>
+            <artifactId>exporter-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.velocitypowered</groupId>
+            <artifactId>velocity-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-velocity</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.akadia</groupId>
+            <artifactId>exporter-core</artifactId>
+            <version>${project.version}</version>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!--
+                      velocity-api ships an annotation processor that generates
+                      velocity-plugin.json from @Plugin. The distribution module writes that
+                      file itself so the version can be filtered from the POM instead of
+                      being hard-coded in an annotation, so the processor is turned off to
+                      keep exactly one source of truth.
+                    -->
+                    <proc>none</proc>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,85 @@
+# A complete local stack: a proxy running the exporter, two backend servers,
+# Prometheus scraping the proxy, and Grafana with the dashboard pre-loaded.
+#
+#   1. mvn package
+#   2. cp ../../exporter-dist/target/bungeecord-prometheus-exporter-*.jar plugins/
+#   3. docker compose up
+#
+# Then:
+#   metrics     http://localhost:9985/metrics
+#   Prometheus  http://localhost:9090
+#   Grafana     http://localhost:3000  (admin / admin)
+#   Minecraft   localhost:25565
+#
+# Switch proxies by changing PROXY_TYPE:
+#   docker compose up                          # Velocity (default)
+#   PROXY_TYPE=BUNGEECORD docker compose up
+#   PROXY_TYPE=WATERFALL  docker compose up
+
+services:
+  proxy:
+    image: itzg/mc-proxy
+    ports:
+      - "25565:25565"
+      - "9985:9985"
+    volumes:
+      - ./plugins:/server/plugins
+    depends_on:
+      - lobby
+      - survival
+    environment:
+      TYPE: "${PROXY_TYPE:-VELOCITY}"
+      MEMORY: "512m"
+      # Everything the exporter needs, straight from the environment. No config file
+      # has to be baked into the image or mounted.
+      MC_PROXY_EXPORTER_HOST: "0.0.0.0"
+      MC_PROXY_EXPORTER_PORT: "9985"
+      MC_PROXY_EXPORTER_COLLECTION_BACKEND_PING_INTERVAL_SECONDS: "15"
+      # Handy while exploring locally; leave these off in production, where they cost
+      # one time series per player.
+      MC_PROXY_EXPORTER_METRICS_PLAYER_LIST: "true"
+      MC_PROXY_EXPORTER_METRICS_COMMAND_LABEL: "true"
+      MC_PROXY_EXPORTER_BSTATS: "false"
+
+  lobby:
+    image: itzg/minecraft-server
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      ONLINE_MODE: "FALSE"
+      MEMORY: "1G"
+
+  survival:
+    image: itzg/minecraft-server
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      ONLINE_MODE: "FALSE"
+      MEMORY: "1G"
+
+  prometheus:
+    image: prom/prometheus:v3.7.3
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ../prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.retention.time=6h
+      - --web.enable-lifecycle
+    depends_on:
+      - proxy
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ../../dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus

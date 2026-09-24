@@ -1,0 +1,19 @@
+# The plugin name doubles as BungeeCord's data-folder name, and it is the value that
+# appears in minecraft_proxy_plugin_info{plugin="..."}. It deliberately matches the
+# Velocity plugin id so the metric reads the same on both platforms; Velocity ids must be
+# lower-case, so that is the spelling both use.
+#
+# This differs from 3.x ("BungeeCordPrometheusExporter"), so the data folder moves. 4.0
+# needs a new config file regardless - see docs/MIGRATION.md.
+name: proxy-prometheus-exporter
+main: org.akadia.prometheus.bungeecord.BungeeCordExporterPlugin
+version: ${project.version}
+author: akadia
+description: ${project.parent.description}
+
+# RedisBungee is optional, but if it is installed it has to enable BEFORE this plugin:
+# its API is resolved at enable time and BungeeCord does not otherwise guarantee an order.
+# Without this, whether the network metrics appeared came down to load order.
+# The Velocity descriptor declares the same thing as an optional dependency on "redisbungee".
+softDepends:
+  - RedisBungee

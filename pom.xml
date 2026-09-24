@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.akadia</groupId>
-    <artifactId>bungeecord-prometheus-exporter</artifactId>
-    <name>BungeeCordPrometheusExporter</name>
-    <version>3.2.8-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <url>https://akadia.org</url>
+    <artifactId>bungeecord-prometheus-exporter-parent</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-    <description>BungeeCord Prometheus Exporter</description>
+    <name>Proxy Prometheus Exporter</name>
+    <description>Prometheus exporter for BungeeCord/Waterfall and Velocity Minecraft proxies</description>
+    <url>https://github.com/weihao/bungeecord-prometheus-exporter</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://github.com/weihao/bungeecord-prometheus-exporter/blob/main/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <scm>
         <url>https://github.com/weihao/bungeecord-prometheus-exporter</url>
@@ -26,207 +36,267 @@
         </repository>
     </distributionManagement>
 
+    <modules>
+        <module>exporter-core</module>
+        <module>exporter-bungeecord</module>
+        <module>exporter-velocity</module>
+        <module>exporter-dist</module>
+    </modules>
 
     <properties>
-        <jetty.version>11.0.24</jetty.version>
-        <prometheus-client.version>0.16.0</prometheus-client.version>
-        <json-path.version>2.10.0</json-path.version>
-        <org.mockito.version>5.20.0</org.mockito.version>
-        <junit.jupiter.version>6.0.1</junit.jupiter.version>
-        <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!--
+          Java 17 is the highest release that runs on every currently supported proxy:
+            BungeeCord 26.1  -> class file 61 (Java 17)
+            Velocity   3.4.x -> class file 61 (Java 17)
+            Velocity   3.5.x -> Java 21 runtime, executes 17 bytecode
+            Velocity   4.x   -> Java 25 runtime, executes 17 bytecode
+          Compiling to 17 keeps a single artifact valid across all of them.
+        -->
+        <maven.compiler.release>17</maven.compiler.release>
+
+        <!-- Runtime -->
+        <prometheus.version>1.9.0</prometheus.version>
+        <snakeyaml.version>2.7</snakeyaml.version>
+        <bstats.version>3.2.1</bstats.version>
+
+        <!--
+          Proxy APIs. Each is the oldest API revision that still contains every
+          symbol we use, verified by a javap signature diff against the newest
+          revision. See docs/COMPATIBILITY.md.
+        -->
+        <velocity.api.version>3.4.0</velocity.api.version>
+        <bungeecord.api.version>1.21-R0.4</bungeecord.api.version>
+
+        <!-- Test -->
+        <junit.version>5.14.0</junit.version>
+        <assertj.version>3.27.7</assertj.version>
+        <mockito.version>5.23.0</mockito.version>
+        <testcontainers.version>1.21.4</testcontainers.version>
+        <slf4j.version>2.0.20</slf4j.version>
+
+        <!-- Plugins -->
         <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.6.0</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>3.6.0</maven-failsafe-plugin.version>
+        <maven-shade-plugin.version>3.6.2</maven-shade-plugin.version>
+        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
+        <maven-release-plugin.version>3.1.1</maven-release-plugin.version>
+        <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
+        <maven-dependency-plugin.version>3.11.0</maven-dependency-plugin.version>
+        <jacoco.version>0.8.15</jacoco.version>
     </properties>
 
     <repositories>
         <repository>
-            <id>bungeecord-repo</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </repository>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-        <repository>
-            <id>velocity</id>
-            <url>https://nexus.velocitypowered.com/repository/maven-public/</url>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
     </repositories>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.13.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.velocitypowered</groupId>
-            <artifactId>velocity-api</artifactId>
-            <version>3.3.0-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-api</artifactId>
-            <version>1.21-R0.4</version>
-            <type>jar</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-api</artifactId>
-            <version>1.21-R0.4</version>
-            <type>javadoc</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.prometheus</groupId>
-            <artifactId>simpleclient_common</artifactId>
-            <version>${prometheus-client.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.prometheus</groupId>
-            <artifactId>simpleclient_hotspot</artifactId>
-            <version>${prometheus-client.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jayway.jsonpath</groupId>
-            <artifactId>json-path</artifactId>
-            <version>${json-path.version}</version>
-        </dependency>
-        <!-- The client -->
-        <dependency>
-            <groupId>io.prometheus</groupId>
-            <artifactId>simpleclient</artifactId>
-            <version>0.16.0</version>
-        </dependency>
-        <!-- Hotspot JVM metrics-->
-        <dependency>
-            <groupId>io.prometheus</groupId>
-            <artifactId>simpleclient_hotspot</artifactId>
-            <version>0.16.0</version>
-        </dependency>
-        <!-- Exposition HTTPServer-->
-        <dependency>
-            <groupId>io.prometheus</groupId>
-            <artifactId>simpleclient_httpserver</artifactId>
-            <version>0.16.0</version>
-        </dependency>
-        <!-- Pushgateway exposition-->
-        <dependency>
-            <groupId>io.prometheus</groupId>
-            <artifactId>simpleclient_pushgateway</artifactId>
-            <version>0.16.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bstats</groupId>
-            <artifactId>bstats-bungeecord</artifactId>
-            <version>3.1.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.bstats/bstats-velocity -->
-        <dependency>
-            <groupId>org.bstats</groupId>
-            <artifactId>bstats-velocity</artifactId>
-            <version>3.1.0</version>
-            <scope>compile</scope>
-        </dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>prometheus-metrics-bom</artifactId>
+                <version>${prometheus.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers-bom</artifactId>
+                <version>${testcontainers.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-        <dependency>
-            <groupId>com.github.proxiodev.redisbungee</groupId>
-            <artifactId>RedisBungee-Bungee</artifactId>
-            <version>0.13.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <!--        testing        -->
+            <dependency>
+                <groupId>org.akadia</groupId>
+                <artifactId>exporter-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.akadia</groupId>
+                <artifactId>exporter-bungeecord</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.akadia</groupId>
+                <artifactId>exporter-velocity</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.velocitypowered</groupId>
+                <artifactId>velocity-api</artifactId>
+                <version>${velocity.api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.md-5</groupId>
+                <artifactId>bungeecord-api</artifactId>
+                <version>${bungeecord.api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bstats</groupId>
+                <artifactId>bstats-bungeecord</artifactId>
+                <version>${bstats.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bstats</groupId>
+                <artifactId>bstats-velocity</artifactId>
+                <version>${bstats.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-junit-jupiter</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <!--
+              Declared for every module, not just the ones that mock: surefire's argLine
+              references ${org.mockito:mockito-core:jar} to load Mockito as a real agent,
+              and that property only resolves where the dependency is on the path.
+            -->
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>${org.mockito.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <version>${org.mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>5.5.6</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
-        <sourceDirectory>src/main/java</sourceDirectory>
-        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <release>${maven.compiler.release}</release>
+                        <compilerArgs>
+                            <arg>-Xlint:all,-serial,-processing</arg>
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <!--
+                          Mockito must be loaded as an agent rather than self-attaching.
+                          Self-attachment is deprecated and will stop working in a future
+                          JDK, so wiring it explicitly keeps the build working on newer
+                          JDKs instead of failing the day it is removed.
+                        -->
+                        <argLine>-javaagent:${org.mockito:mockito-core:jar} -Xshare:off</argLine>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven-failsafe-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${maven-shade-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
-            <!-- git-commit-id -->
             <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <version>4.9.10</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <!-- Resolves ${org.mockito:mockito-core:jar} for the surefire agent flag. -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>git-info</id>
+                        <id>resolve-dependency-paths</id>
                         <goals>
-                            <goal>revision</goal>
+                            <goal>properties</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <injectAllReactorProjects>true</injectAllReactorProjects>
-                    <dateFormat>yyyy-MM-dd HH:mm:ss</dateFormat>
-                    <verbose>true</verbose>
-                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
-                    <gitDescribe>
-                        <skip>false</skip>
-                        <always>false</always>
-                        <abbrev>7</abbrev>
-                        <forceLongFormat>false</forceLongFormat>
-                    </gitDescribe>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.6.1</version>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin.version}</version>
                 <executions>
                     <execution>
-                        <phase>package</phase>
+                        <id>enforce-build-environment</id>
                         <goals>
-                            <goal>shade</goal>
+                            <goal>enforce</goal>
                         </goals>
                         <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <manifestEntries>
-                                        <Implementation-Title>${project.artifactId}</Implementation-Title>
-                                        <Implementation-Version>${project.version}</Implementation-Version>
-                                    </manifestEntries>
-                                </transformer>
-                            </transformers>
-                            <relocations>
-                                <relocation>
-                                    <pattern>org.bstats</pattern>
-                                    <!-- Replace this with your package! -->
-                                    <shadedPattern>org.akadia.prometheus.bstats</shadedPattern>
-                                </relocation>
-                            </relocations>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>[3.8.0,)</version>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>[17,)</version>
+                                </requireJavaVersion>
+                            </rules>
                         </configuration>
                     </execution>
                 </executions>
@@ -234,48 +304,43 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>${maven-release-plugin.version}</version>
                 <configuration>
                     <scmCommentPrefix>[ci skip]</scmCommentPrefix>
                     <tagNameFormat>@{project.version}</tagNameFormat>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <descriptors>
-                        <descriptor>src/main/assembly/package.xml</descriptor>
-                    </descriptors>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>build</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <release>17</release>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources/</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
     </build>
+
+    <profiles>
+        <profile>
+            <!-- mvn verify -Pcoverage -->
+            <id>coverage</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>prepare-agent</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>report</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

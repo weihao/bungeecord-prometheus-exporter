@@ -1,0 +1,171 @@
+# Example alerting rules for the proxy Prometheus exporter.
+#
+# Load with:
+#   rule_files:
+#     - alerts.yml
+#
+# Every rule here is written so it works unchanged across a fleet of proxies: aggregations
+# are by (instance, proxy_name) rather than assuming a single target.
+
+groups:
+  - name: minecraft-proxy
+    rules:
+
+      # --- availability -----------------------------------------------------------
+
+      - alert: ProxyExporterDown
+        expr: up{job="minecraft-proxy"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Proxy {{ $labels.instance }} is not answering scrapes"
+          description: >-
+            Either the proxy is down or the exporter stopped serving /metrics.
+            Check the proxy log for "Prometheus metrics available at".
+
+      - alert: BackendServerDown
+        # server_up is sampled by actually pinging the backend, so this fires before
+        # players start seeing "Unable to connect to server".
+        expr: minecraft_proxy_server_up == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Backend {{ $labels.server }} is unreachable from {{ $labels.instance }}"
+          description: >-
+            The proxy's last server-list ping to {{ $labels.server }} failed. New joins to
+            that server will be refused.
+
+      - alert: AllBackendsDown
+        expr: |
+          sum by (instance) (minecraft_proxy_server_up) == 0
+          and sum by (instance) (minecraft_proxy_servers_registered) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Every backend behind {{ $labels.instance }} is down"
+
+      # --- player experience ------------------------------------------------------
+
+      - alert: HighPlayerLatency
+        # Histogram buckets aggregate correctly across proxies; a Summary quantile
+        # would not, which is why the exporter uses a histogram here.
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum by (le, instance) (rate(minecraft_proxy_player_ping_seconds_bucket[5m]))
+          ) > 0.3
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "p95 player latency on {{ $labels.instance }} is above 300 ms"
+          description: "Currently {{ $value | humanizeDuration }}."
+
+      - alert: SlowBackend
+        expr: minecraft_proxy_server_ping_seconds > 0.5
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Backend {{ $labels.server }} responds slowly ({{ $value | humanizeDuration }})"
+
+      - alert: PlayerExodus
+        # A sharp, sustained drop usually means a backend crashed or a bad deploy.
+        expr: |
+          minecraft_proxy_players_online
+            < 0.5 * (minecraft_proxy_players_online offset 10m)
+          and minecraft_proxy_players_online offset 10m > 20
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $labels.instance }} lost over half its players in 10 minutes"
+
+      - alert: KickStorm
+        expr: sum by (instance, server) (rate(minecraft_proxy_kicks_total[5m])) > 1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Players are being kicked from {{ $labels.server }} at {{ $value }}/s"
+
+      - alert: LoginsBeingDenied
+        expr: |
+          sum by (instance) (rate(minecraft_proxy_logins_total{result="denied"}[5m]))
+            / sum by (instance) (rate(minecraft_proxy_logins_total[5m])) > 0.25
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Over a quarter of logins to {{ $labels.instance }} are being denied"
+          description: >-
+            Often an authentication plugin, a whitelist change, or a Mojang session
+            outage.
+
+      # --- exporter health --------------------------------------------------------
+
+      - alert: ExporterCollectorFailing
+        # Metrics are silently missing from the response while this fires.
+        expr: rate(minecraft_proxy_exporter_scrape_errors_total[10m]) > 0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Collector {{ $labels.collector }} is failing on {{ $labels.instance }}"
+          description: >-
+            That metric is absent from every scrape. Check the proxy log for the stack
+            trace, which is logged once per collector.
+
+      - alert: ExporterDroppingSeries
+        expr: rate(minecraft_proxy_exporter_series_dropped_total[15m]) > 0
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $labels.metric }} has hit its cardinality budget"
+          description: >-
+            New label combinations are being discarded. Either raise
+            collection.max-series-per-metric or turn off the high-cardinality metric
+            groups (player-list, player-ping-per-player, command-label).
+
+      - alert: ExporterSamplerFailing
+        expr: rate(minecraft_proxy_exporter_sampler_runs_total{result="failure"}[15m]) > 0
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Background sampler {{ $labels.sampler }} is failing"
+          description: >-
+            Sampled metrics such as server_up and the latency histogram are stale.
+
+      - alert: ProxyRestartLoop
+        expr: changes(minecraft_proxy_start_time_seconds[30m]) > 3
+        labels:
+          severity: critical
+        annotations:
+          summary: "{{ $labels.instance }} has restarted more than three times in 30 minutes"
+
+      # --- capacity ---------------------------------------------------------------
+
+      - alert: ProxyHeapPressure
+        expr: |
+          jvm_memory_used_bytes{area="heap", job="minecraft-proxy"}
+            / jvm_memory_max_bytes{area="heap", job="minecraft-proxy"} > 0.9
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $labels.instance }} heap is over 90% full"
+
+      - alert: BackendNearCapacity
+        expr: |
+          minecraft_proxy_server_reported_players
+            / minecraft_proxy_server_reported_max_players > 0.9
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Backend {{ $labels.server }} is over 90% full"

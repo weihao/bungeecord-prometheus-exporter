@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - /etc/prometheus/alerts.yml
+
+scrape_configs:
+  - job_name: 'minecraft-proxy'
+    static_configs:
+      - targets: ['proxy:9985']
+        labels:
+          proxy_name: 'local'
+
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']

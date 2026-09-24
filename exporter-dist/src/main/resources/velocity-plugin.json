@@ -1,0 +1,17 @@
+{
+  "id": "proxy-prometheus-exporter",
+  "name": "Proxy Prometheus Exporter",
+  "version": "${project.version}",
+  "description": "${project.parent.description}",
+  "url": "https://github.com/weihao/bungeecord-prometheus-exporter",
+  "authors": [
+    "akadia"
+  ],
+  "dependencies": [
+    {
+      "id": "redisbungee",
+      "optional": true
+    }
+  ],
+  "main": "org.akadia.prometheus.velocity.VelocityExporterPlugin"
+}
